@@ -37,11 +37,4 @@ namespace Architecture.Services.Factories.UI
         private Transform CreateParent(Transform parent) => 
             Object.Instantiate(parent);
     }
-
-    public interface IUIFactory
-    {
-        Transform UIRoot { get; }
-        void CreateMainMenu();
-        void CreateInGameMenu();
-    }
 }
