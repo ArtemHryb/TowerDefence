@@ -1,4 +1,5 @@
-﻿using Architecture.States.Interfaces;
+﻿using Architecture.Services.Enemy;
+using Architecture.States.Interfaces;
 using SceneManagement;
 using UnityEngine;
 
@@ -8,10 +9,12 @@ namespace Architecture.States
     {
         private const string Level1 = "Level1";
         private readonly ISceneLoader _sceneLoader;
+        private readonly IEnemySpawner _enemySpawner;
 
-        public LoadGameState(ISceneLoader sceneLoader)
+        public LoadGameState(ISceneLoader sceneLoader,IEnemySpawner enemySpawner)
         {
             _sceneLoader = sceneLoader;
+            _enemySpawner = enemySpawner;
         }
         public void Exit()
         {
@@ -25,6 +28,7 @@ namespace Architecture.States
         private void InitGame()
         {
             Debug.Log("Level1");
+            _enemySpawner.SpawnEnemies(5);
         }
     }
 }

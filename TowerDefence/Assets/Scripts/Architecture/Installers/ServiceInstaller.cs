@@ -1,4 +1,6 @@
 ﻿using Architecture.Services;
+using Architecture.Services.Enemy;
+using Architecture.Services.Factories.Enemy;
 using Architecture.Services.Factories.UI;
 using Architecture.Services.Interfaces;
 using Architecture.States;
@@ -19,6 +21,24 @@ namespace Architecture.Installers
             BindCoroutineRunner();
             BindAssetProvider();
             BindUIFactory();
+            BindEnemyFactory();
+            BindEnemySpawner();
+        }
+
+        private void BindEnemySpawner()
+        {
+            Container
+                .Bind<IEnemySpawner>()
+                .To<EnemySpawner>()
+                .AsSingle();
+        }
+
+        private void BindEnemyFactory()
+        {
+            Container
+                .Bind<IEnemyFactory>()
+                .To<EnemyFactory>()
+                .AsSingle();
         }
 
         private void BindUIFactory()
