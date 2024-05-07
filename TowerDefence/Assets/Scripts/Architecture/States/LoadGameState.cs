@@ -28,6 +28,7 @@ namespace Architecture.States
         private void InitGame()
         {
             Debug.Log("Level1");
+            
             _enemySpawner.SpawnEnemies(5);
         }
     }

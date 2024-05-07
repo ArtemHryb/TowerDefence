@@ -22,14 +22,14 @@ namespace Architecture.Services.Enemy
             _coroutineRunner.StartCoroutine(SpawnEnemy(count));
         }
 
-        private IEnumerator SpawnEnemy(int count)
-        {
-            while (count > 0)
-            {
+        private IEnumerator SpawnEnemy(int enemyCount)
+        { 
+            while (enemyCount > 0) 
+            { 
                 _enemyFactory.CreateEnemy(AssetPath.Solider, new Vector3(-151.94f, 0, -183.77f),
-                    Quaternion.identity, null);
-                count--;
-                yield return new WaitForSeconds(1);
+                    Quaternion.identity, null); 
+                enemyCount--; 
+                yield return new WaitForSeconds(1f);
             }
         }
     }
