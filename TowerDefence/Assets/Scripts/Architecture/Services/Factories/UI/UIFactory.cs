@@ -29,6 +29,9 @@ namespace Architecture.Services.Factories.UI
 
         public void CreateInGameMenu()
         {
+            UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
+            _container.InstantiatePrefabForComponent<SpawnEnemy>(_assetProvider.Initialize<SpawnEnemy>(AssetPath.SpawnEnemy),UIRoot);
+            //Object.Instantiate(_assetProvider.Initialize<SpawnEnemy>(AssetPath.SpawnEnemy),UIRoot);
         }
 
         private void CreateUIElement<T>(string path) where T : Object => 

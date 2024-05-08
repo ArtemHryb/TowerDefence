@@ -5,6 +5,7 @@ using Architecture.Services.Factories.UI;
 using Architecture.Services.Interfaces;
 using Architecture.States;
 using Architecture.States.Interfaces;
+using Data.LevelData;
 using SceneManagement;
 using UnityEngine;
 using Zenject;
@@ -14,6 +15,7 @@ namespace Architecture.Installers
     public class ServiceInstaller : MonoInstaller
     {
         [SerializeField] private MyCoroutineRunner _coroutineRunner;
+        [SerializeField] private LevelDataHolder _levelData;
 
         public override void InstallBindings()
         {
@@ -21,8 +23,26 @@ namespace Architecture.Installers
             BindCoroutineRunner();
             BindAssetProvider();
             BindUIFactory();
+            BindAllLevelsSettings();
+            BindCurrentLevelSettingsProvider();
             BindEnemyFactory();
             BindEnemySpawner();
+        }
+
+        private void BindAllLevelsSettings()
+        {
+            Container
+                .Bind<LevelDataHolder>()
+                .FromScriptableObject(_levelData)
+                .AsSingle();
+        }
+
+        private void BindCurrentLevelSettingsProvider()
+        {
+            Container
+                .Bind<ICurrentLevelSettingsProvider>()
+                .To<CurrentLevelSettingsProvider>()
+                .AsSingle();
         }
 
         private void BindEnemySpawner()

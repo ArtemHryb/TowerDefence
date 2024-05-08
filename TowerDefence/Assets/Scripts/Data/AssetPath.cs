@@ -9,5 +9,8 @@
         public const string Solider = "Enemy/Solider_Blue";
         public const string EnemyParent = "Enemy/EnemyParent";
         
+        public const string SpawnEnemy = "SpawnEnemy";
+        public const string Cube = "Cube";
+        
     }
 }

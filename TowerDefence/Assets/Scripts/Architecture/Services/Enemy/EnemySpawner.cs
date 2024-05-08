@@ -22,6 +22,25 @@ namespace Architecture.Services.Enemy
             _coroutineRunner.StartCoroutine(SpawnEnemy(count));
         }
 
+        public void SpawnEnemies(int count, int waves,float delay)
+        {
+            _enemyFactory.CreateEnemyParent();
+            _coroutineRunner.StartCoroutine(SpawnWave(count, waves,delay));
+        }
+
+        private IEnumerator SpawnWave(int enemyCount,int waves,float delay)
+        {
+            delay += enemyCount;
+            
+            while (waves > 0)
+            {
+                _coroutineRunner.StartCoroutine(SpawnEnemy(enemyCount));
+                waves--;
+                yield return new WaitForSeconds(delay);
+            }
+
+        }
+
         private IEnumerator SpawnEnemy(int enemyCount)
         { 
             while (enemyCount > 0) 

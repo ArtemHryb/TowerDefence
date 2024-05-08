@@ -1,13 +1,13 @@
 ﻿using Architecture.Services.Factories.UI;
 using Architecture.States.Interfaces;
 using SceneManagement;
-using UnityEngine;
 
 namespace Architecture.States
 {
     public class LoadMainMenuState : IState
     {
         private const string Boot = "Boot";
+        
         private readonly ISceneLoader _sceneLoader;
         private readonly IUIFactory _uiFactory;
 
