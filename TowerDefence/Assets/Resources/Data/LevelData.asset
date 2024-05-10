@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Levels:
   - LevelId: 0
-    EnemyCount: 3
+    EnemyCount: 5
     Waves: 2
-    DelayBeforeNextWave: 5
+    DelayBeforeNextWave: 4
   - LevelId: 1
     EnemyCount: 5
     Waves: 3
