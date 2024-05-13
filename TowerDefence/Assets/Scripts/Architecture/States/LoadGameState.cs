@@ -25,7 +25,6 @@ namespace Architecture.States
 
         private void InitGame()
         {
-            Debug.Log("Level1");
             _uiFactory.CreateInGameMenu();
         }
     }

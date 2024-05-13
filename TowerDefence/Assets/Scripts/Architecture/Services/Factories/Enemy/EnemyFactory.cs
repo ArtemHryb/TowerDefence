@@ -1,6 +1,5 @@
 ﻿using Architecture.Services.Interfaces;
 using Data;
-using Enemy;
 using UnityEngine;
 using Zenject;
 

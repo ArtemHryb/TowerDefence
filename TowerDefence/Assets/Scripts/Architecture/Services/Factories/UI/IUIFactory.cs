@@ -7,5 +7,6 @@ namespace Architecture.Services.Factories.UI
         Transform UIRoot { get; }
         void CreateMainMenu();
         void CreateInGameMenu();
+        void CreateLoseMenu();
     }
 }

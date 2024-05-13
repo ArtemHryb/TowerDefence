@@ -39,6 +39,15 @@ namespace Architecture.Services.Factories.UI
                 (_assetProvider.Initialize<DisplayPlayerHp>(AssetPath.DisplayPlayerHp), UIRoot);
         }
 
+        public void CreateLoseMenu()
+        {
+            UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
+            
+            _container.InstantiatePrefabForComponent<LoseMenu>
+                (_assetProvider.Initialize<LoseMenu>(AssetPath.LoseMenu), UIRoot);
+            Time.timeScale = 0;
+        }
+
         private void CreateUIElement<T>(string path) where T : Object => 
             _container.InstantiatePrefab(_assetProvider.Initialize<T>(path), UIRoot);
 
