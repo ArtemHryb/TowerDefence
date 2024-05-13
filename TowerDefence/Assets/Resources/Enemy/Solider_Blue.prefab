@@ -347,8 +347,8 @@ GameObject:
   - component: {fileID: 2215817905187512461}
   - component: {fileID: 5653586139872611419}
   - component: {fileID: 343690521739644222}
-  - component: {fileID: 244414763167029933}
   - component: {fileID: 4336094334109444658}
+  - component: {fileID: 244414763167029933}
   - component: {fileID: 4994358467736766537}
   m_Layer: 0
   m_Name: Solider_Blue
@@ -443,6 +443,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4336094334109444658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7913891522175035748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eedd70e4d384fcf8ec1e2e148f0e3b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &244414763167029933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,18 +469,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: 343690521739644222}
   _finish: {fileID: 713915118627125966, guid: fccf417d07c122842b3cb3dc339f69d5, type: 3}
---- !u!114 &4336094334109444658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7913891522175035748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eedd70e4d384fcf8ec1e2e148f0e3b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4994358467736766537
 MonoBehaviour:
   m_ObjectHideFlags: 0

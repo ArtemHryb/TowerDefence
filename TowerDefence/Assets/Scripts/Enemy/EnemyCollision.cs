@@ -1,15 +1,23 @@
-﻿using UnityEngine;
+﻿using Architecture.Services.Player;
+using Data;
+using UnityEngine;
+using Zenject;
 
 namespace Enemy
 {
     public class EnemyCollision : MonoBehaviour
     {
-        private const string Finish = "Finish";
+        private IPlayerHpService _playerHpService;
+        
+        [Inject]
+        public void Construct(IPlayerHpService playerHpService) => 
+            _playerHpService = playerHpService;
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(Finish))
+            if (other.CompareTag(Tags.Finish))
             {
+                _playerHpService.TakeDamage(1);
                 Destroy(gameObject);
             }
         }

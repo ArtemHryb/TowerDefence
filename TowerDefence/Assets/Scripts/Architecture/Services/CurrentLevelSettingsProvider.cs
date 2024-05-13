@@ -5,18 +5,18 @@ namespace Architecture.Services
 {
     public class CurrentLevelSettingsProvider : ICurrentLevelSettingsProvider
     {
-        private readonly LevelDataHolder _levelDataHolder;
+        private readonly LevelSettings _levelSettings;
 
-        public CurrentLevelSettingsProvider(LevelDataHolder levelDataHolder)
+        public CurrentLevelSettingsProvider(LevelSettings levelSettings)
         {
-            _levelDataHolder = levelDataHolder;
+            _levelSettings = levelSettings;
         }
         
         public LevelData GetCurrentLevelSettings()
         {
             LevelData levelData = new LevelData();
             
-            foreach (LevelData level in _levelDataHolder.Levels)
+            foreach (LevelData level in _levelSettings.Levels)
             {
                 if (level.LevelId.ToString() == SceneManager.GetActiveScene().name)
                 {

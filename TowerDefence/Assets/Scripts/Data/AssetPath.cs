@@ -4,6 +4,7 @@
     {
         public const string UIRoot = "UI/UIRoot";
         public const string MainMenu = "UI/MainMenu/MainMenu";
+        public const string DisplayPlayerHp = "UI/OnLevel/PlayerHp";
         
         
         public const string Solider = "Enemy/Solider_Blue";

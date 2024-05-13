@@ -14,10 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Levels:
   - LevelId: 0
+    PlayerHp: 3
+    PlayerCoins: 100
     EnemyCount: 5
     Waves: 2
     DelayBeforeNextWave: 4
   - LevelId: 1
+    PlayerHp: 3
+    PlayerCoins: 100
     EnemyCount: 5
     Waves: 3
     DelayBeforeNextWave: 3

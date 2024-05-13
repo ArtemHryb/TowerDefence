@@ -38,7 +38,6 @@ namespace Architecture.Services.Enemy
                 waves--;
                 yield return new WaitForSeconds(delay);
             }
-
         }
 
         private IEnumerator SpawnEnemy(int enemyCount)

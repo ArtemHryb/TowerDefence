@@ -1,6 +1,7 @@
 ﻿using Architecture.Services.Interfaces;
 using Data;
 using UI;
+using UI.InGame;
 using UnityEngine;
 using Zenject;
 
@@ -30,8 +31,12 @@ namespace Architecture.Services.Factories.UI
         public void CreateInGameMenu()
         {
             UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
-            _container.InstantiatePrefabForComponent<SpawnEnemy>(_assetProvider.Initialize<SpawnEnemy>(AssetPath.SpawnEnemy),UIRoot);
-            //Object.Instantiate(_assetProvider.Initialize<SpawnEnemy>(AssetPath.SpawnEnemy),UIRoot);
+            
+            _container.InstantiatePrefabForComponent<SpawnEnemy>
+                (_assetProvider.Initialize<SpawnEnemy>(AssetPath.SpawnEnemy),UIRoot);
+            
+            _container.InstantiatePrefabForComponent<DisplayPlayerHp>
+                (_assetProvider.Initialize<DisplayPlayerHp>(AssetPath.DisplayPlayerHp), UIRoot);
         }
 
         private void CreateUIElement<T>(string path) where T : Object => 

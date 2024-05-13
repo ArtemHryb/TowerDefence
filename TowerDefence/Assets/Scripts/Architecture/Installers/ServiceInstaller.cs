@@ -3,6 +3,7 @@ using Architecture.Services.Enemy;
 using Architecture.Services.Factories.Enemy;
 using Architecture.Services.Factories.UI;
 using Architecture.Services.Interfaces;
+using Architecture.Services.Player;
 using Architecture.States;
 using Architecture.States.Interfaces;
 using Data.LevelData;
@@ -15,24 +16,35 @@ namespace Architecture.Installers
     public class ServiceInstaller : MonoInstaller
     {
         [SerializeField] private MyCoroutineRunner _coroutineRunner;
-        [SerializeField] private LevelDataHolder _levelData;
+        [SerializeField] private LevelSettings _levelData;
 
         public override void InstallBindings()
         {
             BindSceneLoader();
             BindCoroutineRunner();
             BindAssetProvider();
+            
             BindUIFactory();
-            BindAllLevelsSettings();
+            BindLevelsSettings();
             BindCurrentLevelSettingsProvider();
+            
+            BindPlayerHpService();
             BindEnemyFactory();
             BindEnemySpawner();
         }
 
-        private void BindAllLevelsSettings()
+        private void BindPlayerHpService()
         {
             Container
-                .Bind<LevelDataHolder>()
+                .Bind<IPlayerHpService>()
+                .To<PlayerHpService>()
+                .AsSingle();
+        }
+
+        private void BindLevelsSettings()
+        {
+            Container
+                .Bind<LevelSettings>()
                 .FromScriptableObject(_levelData)
                 .AsSingle();
         }
