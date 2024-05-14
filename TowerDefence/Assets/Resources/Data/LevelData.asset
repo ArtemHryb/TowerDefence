@@ -21,7 +21,7 @@ MonoBehaviour:
     DelayBeforeNextWave: 4
   - LevelId: 1
     PlayerHp: 3
-    PlayerCoins: 100
+    PlayerCoins: 125
     EnemyCount: 5
     Waves: 3
     DelayBeforeNextWave: 3

@@ -26,6 +26,7 @@ namespace Architecture.States
         private void InitGame()
         {
             _uiFactory.CreateInGameMenu();
+            
         }
     }
 }

@@ -37,6 +37,9 @@ namespace Architecture.Services.Factories.UI
             
             _container.InstantiatePrefabForComponent<DisplayPlayerHp>
                 (_assetProvider.Initialize<DisplayPlayerHp>(AssetPath.DisplayPlayerHp), UIRoot);
+            
+            _container.InstantiatePrefabForComponent<DisplayCoinsCount>
+                (_assetProvider.Initialize<DisplayCoinsCount>(AssetPath.DisplayCoinsCount), UIRoot);
         }
 
         public void CreateLoseMenu()

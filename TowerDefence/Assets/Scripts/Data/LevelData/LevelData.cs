@@ -16,7 +16,7 @@ namespace Data.LevelData
         public int EnemyCount;
         public int Waves;
         public float DelayBeforeNextWave;
-        
-        
+
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Architecture.Services;
+using Architecture.Services.Coin;
 using Architecture.Services.Enemy;
 using Architecture.Services.Factories.Enemy;
 using Architecture.Services.Factories.UI;
@@ -29,8 +30,17 @@ namespace Architecture.Installers
             BindCurrentLevelSettingsProvider();
             
             BindPlayerHpService();
+            BindCoinService();
             BindEnemyFactory();
             BindEnemySpawner();
+        }
+
+        private void BindCoinService()
+        {
+            Container
+                .Bind<ICoinService>()
+                .To<CoinService>()
+                .AsSingle();
         }
 
         private void BindPlayerHpService()
