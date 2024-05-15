@@ -14,12 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Levels:
   - LevelId: 0
+    Start: {fileID: 6942413578144346079, guid: 25a81d27b795bfc4aa798f8d5b47cc0d, type: 3}
+    Finish: {fileID: 4049698592204863426, guid: 371720d7aadd2444d9b92b7c2745805f,
+      type: 3}
     PlayerHp: 3
     PlayerCoins: 100
     EnemyCount: 5
     Waves: 2
     DelayBeforeNextWave: 4
   - LevelId: 1
+    Start: {fileID: 6942413578144346079, guid: 25a81d27b795bfc4aa798f8d5b47cc0d, type: 3}
+    Finish: {fileID: 4049698592204863426, guid: 371720d7aadd2444d9b92b7c2745805f,
+      type: 3}
     PlayerHp: 3
     PlayerCoins: 125
     EnemyCount: 5

@@ -1,8 +1,8 @@
-﻿using Architecture.Services.Factories.UI;
+﻿using Architecture.Services.Factories.Components;
+using Architecture.Services.Factories.UI;
 using Architecture.States.Interfaces;
 using Data;
 using SceneManagement;
-using UnityEngine;
 
 namespace Architecture.States
 {
@@ -10,11 +10,14 @@ namespace Architecture.States
     {
         private readonly ISceneLoader _sceneLoader;
         private readonly IUIFactory _uiFactory;
+        private readonly IComponentFactory _componentFactory;
 
-        public LoadGameState(ISceneLoader sceneLoader, IUIFactory uiFactory)
+        public LoadGameState(ISceneLoader sceneLoader, IUIFactory uiFactory, 
+            IComponentFactory componentFactory)
         {
             _sceneLoader = sceneLoader;
             _uiFactory = uiFactory;
+            _componentFactory = componentFactory;
         }
         public void Exit()
         {
@@ -26,7 +29,7 @@ namespace Architecture.States
         private void InitGame()
         {
             _uiFactory.CreateInGameMenu();
-            
+            _componentFactory.InstantiateComponents();
         }
     }
 }

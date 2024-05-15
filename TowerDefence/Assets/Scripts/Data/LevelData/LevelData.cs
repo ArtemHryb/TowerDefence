@@ -6,7 +6,10 @@ namespace Data.LevelData
     [Serializable]
     public class LevelData
     {
+        [Header("Level Settings")]
         public Levels LevelId;
+        public Transform Start;
+        public Transform Finish;
         
         [Header("Player Settings")]
         public int PlayerHp;

@@ -1,7 +1,9 @@
 ﻿using Architecture.Services;
 using Architecture.Services.Coin;
 using Architecture.Services.Enemy;
+using Architecture.Services.Factories.Components;
 using Architecture.Services.Factories.Enemy;
+using Architecture.Services.Factories.Tower;
 using Architecture.Services.Factories.UI;
 using Architecture.Services.Interfaces;
 using Architecture.Services.Player;
@@ -31,8 +33,40 @@ namespace Architecture.Installers
             
             BindPlayerHpService();
             BindCoinService();
+            BindPlayerInput();
+            
+            BindComponentFactory();
             BindEnemyFactory();
+            BindTowerFactory();
             BindEnemySpawner();
+        }
+
+        private void BindComponentFactory()
+        {
+            Container.
+                Bind<IComponentFactory>()
+                .To<ComponentFactory>()
+                .AsSingle();
+        }
+
+        private void BindTowerFactory()
+        {
+            Container
+                .Bind<ITowerFactory>()
+                .To<TowerFactory>()
+                .AsSingle();
+        }
+
+        private void BindPlayerInput()
+        {
+            PlayerInput input = new PlayerInput();
+            
+            input.Enable();
+            
+            Container
+                .Bind<PlayerInput>()
+                .FromInstance(input)
+                .AsSingle();
         }
 
         private void BindCoinService()

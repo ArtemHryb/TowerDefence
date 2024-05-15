@@ -10,11 +10,13 @@ namespace Architecture.Services.Enemy
     {
         private readonly IEnemyFactory _enemyFactory;
         private readonly ICoroutineRunner _coroutineRunner;
+        private readonly ICurrentLevelSettingsProvider _currentLevelSettingsProvider;
 
-        public EnemySpawner(IEnemyFactory enemyFactory,ICoroutineRunner coroutineRunner)
+        public EnemySpawner(IEnemyFactory enemyFactory,ICoroutineRunner coroutineRunner,ICurrentLevelSettingsProvider currentLevelSettingsProvider)
         {
             _enemyFactory = enemyFactory;
             _coroutineRunner = coroutineRunner;
+            _currentLevelSettingsProvider = currentLevelSettingsProvider;
         }
         public void SpawnEnemies(int count)
         {
@@ -43,9 +45,9 @@ namespace Architecture.Services.Enemy
         private IEnumerator SpawnEnemy(int enemyCount)
         { 
             while (enemyCount > 0) 
-            { 
-                _enemyFactory.CreateEnemy(AssetPath.Solider, new Vector3(-151.94f, 0, -183.77f),
-                    Quaternion.identity, null); 
+            {
+                _enemyFactory.CreateEnemy(AssetPath.Solider, _currentLevelSettingsProvider.GetCurrentLevelSettings().Start.position,
+                    Quaternion.identity, null);
                 enemyCount--; 
                 yield return new WaitForSeconds(1f);
             }

@@ -1,21 +1,23 @@
-﻿using UnityEngine;
+﻿using Architecture.Services;
+using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 namespace Enemy
 {
     public class EnemyMovement : MonoBehaviour
     {
         [SerializeField] private NavMeshAgent _agent;
-        [SerializeField] private Transform _finish;
+        private ICurrentLevelSettingsProvider _currentLevelSettingsProvider;
+        
+        [Inject]
+        public void Construct(ICurrentLevelSettingsProvider currentLevelSettingsProvider) => 
+            _currentLevelSettingsProvider = currentLevelSettingsProvider;
 
-        private void Start()
-        {
-            MoveToFinish(_finish);
-        }
+        private void Start() => 
+            MoveToFinish(_currentLevelSettingsProvider.GetCurrentLevelSettings().Finish);
 
-        private void MoveToFinish(Transform finish)
-        {
+        private void MoveToFinish(Transform finish) => 
             _agent.SetDestination(finish.position);
-        }
     }
 }
