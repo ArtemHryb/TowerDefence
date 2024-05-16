@@ -62,7 +62,7 @@ namespace Architecture.Services.Factories.UI
             UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
 
         private void CreateTowerSelection() =>
-            _container.InstantiatePrefabForComponent<TowerSelection>
+           TowerSelection = _container.InstantiatePrefabForComponent<TowerSelection>
                 (_assetProvider.Initialize<TowerSelection>(AssetPath.TowerSelection), UIRoot);
 
         private void CreateTowerSelectionButtons(TowerSelection towerSelection)

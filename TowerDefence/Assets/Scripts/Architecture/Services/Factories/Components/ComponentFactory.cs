@@ -22,6 +22,7 @@ namespace Architecture.Services.Factories.Components
             GameObject parent = Object.Instantiate(_assetProvider.Initialize<GameObject>(AssetPath.MainLevelComponentsParent));
 
             CreateComponent<TowerSpawner>(AssetPath.TowerSpawner, parent.transform);
+            CreateComponent<TowerModelDisplayer>(AssetPath.TowerModelDisplayer, parent.transform);
         }
 
         private void CreateComponent<T>(string componentPath, Transform parent) where T : MonoBehaviour =>

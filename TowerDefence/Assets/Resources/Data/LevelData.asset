@@ -19,6 +19,19 @@ MonoBehaviour:
       type: 3}
     PlayerHp: 3
     PlayerCoins: 100
+    TowerSelectionButtons:
+      Buttons:
+      - ButtonPrefab: {fileID: 4680010376749980596, guid: 5e0f4f24e47ae604ca6dcd0a8848c1d2,
+          type: 3}
+        Tower:
+          TowerType: 0
+          TowerPrefab: {fileID: 8480562181185951144, guid: cb9d9b4790d64b64fa22293f8a873b4e,
+            type: 3}
+          TowerGhostPrefab: {fileID: 4978146501407319980, guid: 24c42055d55441345af516a5c9c3c340,
+            type: 3}
+          Price: 20
+          AttackRange: 30
+          FireSpeed: 5
     EnemyCount: 5
     Waves: 2
     DelayBeforeNextWave: 4
@@ -28,6 +41,8 @@ MonoBehaviour:
       type: 3}
     PlayerHp: 3
     PlayerCoins: 125
+    TowerSelectionButtons:
+      Buttons: []
     EnemyCount: 5
     Waves: 3
     DelayBeforeNextWave: 3

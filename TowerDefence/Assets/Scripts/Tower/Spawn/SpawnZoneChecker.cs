@@ -9,7 +9,7 @@ namespace Tower.Spawn
         private readonly LayerMask _towerLayer = 1<<7;
 
         private Ray _ray;
-        private int _maxRaycastDistance = 200;
+        private readonly int _maxRaycastDistance = 200;
 
         private Vector2 _mousePosition;
 

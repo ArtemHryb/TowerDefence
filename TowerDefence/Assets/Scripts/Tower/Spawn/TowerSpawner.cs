@@ -18,19 +18,17 @@ namespace Tower.Spawn
         private ICoinService _coinService;
         private IUIFactory _uiFactory;
         private PlayerInput _input;
-        private IAssetProvider _assetProvider;
         
         private Vector3 _worldPosition;
 
         [Inject]
         public void Construct(ITowerFactory towerFactory, ICoinService localCoinService,
-            PlayerInput input, IUIFactory uiFactory, IAssetProvider assetProvider)
+            PlayerInput input, IUIFactory uiFactory)
         {
             _towerFactory = towerFactory;
             _coinService = localCoinService;
             _uiFactory = uiFactory;
             _input = input;
-            _assetProvider = assetProvider;
         }
 
         private void SpawnTower(InputAction.CallbackContext context)
@@ -43,14 +41,11 @@ namespace Tower.Spawn
             if (_worldPosition == default)
                 return;
 
-            if (_coinService.Coins > 0)
+            if (_coinService.Coins >= _uiFactory.TowerSelection.SelectedButton?.Tower.Price)
             {
-                _coinService.Buy(1);
-                _towerFactory.CreateTower(_assetProvider.Initialize<GameObject>(AssetPath.ArcherTower), _worldPosition, 
+                _coinService.Buy(_uiFactory.TowerSelection.SelectedButton.Tower.Price);
+                _towerFactory.CreateTower(_uiFactory.TowerSelection.SelectedButton.Tower.TowerPrefab, _worldPosition, 
                     Quaternion.identity, transform);
-                // Instantiate(_assetProvider.Initialize<GameObject>(AssetPath.ArcherTower)
-                //     ,_worldPosition, Quaternion.identity, transform);
-                Debug.Log("Tower spawned");
             }
             else
             {
