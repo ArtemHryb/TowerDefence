@@ -21,14 +21,12 @@ namespace Tower.Spawn
         {
             if (_uiFactory.TowerSelection?.SelectedButton != null)
                 ChangeColor(_lightRedColor);
-            Debug.Log("Mouse Enter ColorRED");
         }
 
         private void OnMouseExit()
         {
             if (_uiFactory.TowerSelection?.SelectedButton != null)
                 ChangeColor(_lightGreenColor);
-            Debug.Log("Mouse Enter ColorGREEN");
         }
 
         private void ChangeColor(Color32 color) =>
