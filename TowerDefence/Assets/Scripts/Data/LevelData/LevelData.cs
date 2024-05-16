@@ -1,4 +1,5 @@
 ﻿using System;
+using Data.TowerSelection;
 using UnityEngine;
 
 namespace Data.LevelData
@@ -14,6 +15,9 @@ namespace Data.LevelData
         [Header("Player Settings")]
         public int PlayerHp;
         public int PlayerCoins;
+        
+        [Header("Tower selection buttons")]
+        public TowerSelectionButtonsHolder TowerSelectionButtons;
         
         [Header("Wave Settings")]
         public int EnemyCount;

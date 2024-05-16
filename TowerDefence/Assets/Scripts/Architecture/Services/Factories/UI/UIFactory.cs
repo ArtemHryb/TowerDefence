@@ -1,5 +1,7 @@
 ﻿using Architecture.Services.Interfaces;
 using Data;
+using Data.LevelData;
+using Tower.Selection;
 using UI;
 using UI.InGame;
 using UnityEngine;
@@ -9,15 +11,20 @@ namespace Architecture.Services.Factories.UI
 {
     public class UIFactory : IUIFactory
     {
+        public TowerSelection TowerSelection { get; private set; }
         public Transform UIRoot { get; private set; }
-
+        private LevelSettings _levelsSettings;
+        
         private readonly DiContainer _container;
+        private readonly ICurrentLevelSettingsProvider _currentLevelSettingsProvider;
         private readonly IAssetProvider _assetProvider;
 
-        public UIFactory(IAssetProvider assetProvider, DiContainer container)
+        public UIFactory(IAssetProvider assetProvider, DiContainer container,ICurrentLevelSettingsProvider currentLevelSettingsProvider)
         {
             _assetProvider = assetProvider;
             _container = container;
+            _currentLevelSettingsProvider = currentLevelSettingsProvider;
+            CacheVariables();
         }
         
         public void CreateMainMenu()
@@ -30,16 +37,46 @@ namespace Architecture.Services.Factories.UI
 
         public void CreateInGameMenu()
         {
-            UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
+            CreateUIRoot();
+            CreateSpawnEnemy();
+            CreatePlayerHPView();
+            CreatePlayerCoinsView();
             
-            _container.InstantiatePrefabForComponent<SpawnEnemy>
-                (_assetProvider.Initialize<SpawnEnemy>(AssetPath.SpawnEnemy),UIRoot);
-            
-            _container.InstantiatePrefabForComponent<DisplayPlayerHp>
-                (_assetProvider.Initialize<DisplayPlayerHp>(AssetPath.DisplayPlayerHp), UIRoot);
-            
+            CreateTowerSelection(); 
+            CreateTowerSelectionButtons(TowerSelection);
+        }
+
+        private void CreatePlayerCoinsView() =>
             _container.InstantiatePrefabForComponent<DisplayCoinsCount>
                 (_assetProvider.Initialize<DisplayCoinsCount>(AssetPath.DisplayCoinsCount), UIRoot);
+
+        private void CreatePlayerHPView() =>
+            _container.InstantiatePrefabForComponent<DisplayPlayerHp>
+                (_assetProvider.Initialize<DisplayPlayerHp>(AssetPath.DisplayPlayerHp), UIRoot);
+
+        private void CreateSpawnEnemy() =>
+            _container.InstantiatePrefabForComponent<SpawnEnemy>
+                (_assetProvider.Initialize<SpawnEnemy>(AssetPath.SpawnEnemy),UIRoot);
+
+        private void CreateUIRoot() => 
+            UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
+
+        private void CreateTowerSelection() =>
+            _container.InstantiatePrefabForComponent<TowerSelection>
+                (_assetProvider.Initialize<TowerSelection>(AssetPath.TowerSelection), UIRoot);
+
+        private void CreateTowerSelectionButtons(TowerSelection towerSelection)
+        {
+            LevelData currentLevelSettings = _currentLevelSettingsProvider.GetCurrentLevelSettings();
+
+            foreach (TowerSelectionButton button in currentLevelSettings.TowerSelectionButtons.Buttons)
+            {
+                TowerSelectionButtonHolder spawnedButton = _container
+                    .InstantiatePrefabForComponent<TowerSelectionButtonHolder>(button.ButtonPrefab, towerSelection.transform);
+
+                spawnedButton.Tower = button.Tower;
+                towerSelection.Buttons.Add(spawnedButton);
+            }
         }
 
         public void CreateLoseMenu()
@@ -50,11 +87,13 @@ namespace Architecture.Services.Factories.UI
                 (_assetProvider.Initialize<LoseMenu>(AssetPath.LoseMenu), UIRoot);
             Time.timeScale = 0;
         }
-
-        private void CreateUIElement<T>(string path) where T : Object => 
-            _container.InstantiatePrefab(_assetProvider.Initialize<T>(path), UIRoot);
-
+        
         private Transform CreateParent(Transform parent) => 
             Object.Instantiate(parent);
+        
+        private void CacheVariables()
+        {
+            _levelsSettings = _assetProvider.Initialize<LevelSettings>(AssetPath.LevelSettings);
+        }
     }
 }

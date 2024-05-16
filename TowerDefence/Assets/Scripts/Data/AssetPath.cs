@@ -15,7 +15,14 @@
 
         public const string Solider = "Enemy/Solider_Blue";
         public const string EnemyParent = "Enemy/EnemyParent";
+        
         public const string ArcherTower = "Tower/ArcherTower";
+        public const string ArcherTowerGhost = "Tower/ArcherTowerGhost";
+        
+        public const string TowerSelection = "UI/OnLevel/TowerSelection";
+        public const string LevelSettings = "Data/LevelData";
+        
+        
         
         
     }
