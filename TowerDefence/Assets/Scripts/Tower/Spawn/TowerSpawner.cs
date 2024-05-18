@@ -1,8 +1,6 @@
 ﻿using Architecture.Services.Coin;
 using Architecture.Services.Factories.Tower;
 using Architecture.Services.Factories.UI;
-using Architecture.Services.Interfaces;
-using Data;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
