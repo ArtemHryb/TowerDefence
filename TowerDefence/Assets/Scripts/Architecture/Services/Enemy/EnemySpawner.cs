@@ -12,7 +12,8 @@ namespace Architecture.Services.Enemy
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly ICurrentLevelSettingsProvider _currentLevelSettingsProvider;
 
-        public EnemySpawner(IEnemyFactory enemyFactory,ICoroutineRunner coroutineRunner,ICurrentLevelSettingsProvider currentLevelSettingsProvider)
+        public EnemySpawner(IEnemyFactory enemyFactory,ICoroutineRunner coroutineRunner
+            ,ICurrentLevelSettingsProvider currentLevelSettingsProvider)
         {
             _enemyFactory = enemyFactory;
             _coroutineRunner = coroutineRunner;

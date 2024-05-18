@@ -3,7 +3,7 @@ using Data;
 using UnityEngine;
 using Zenject;
 
-namespace Enemy
+namespace Enemy.Health
 {
     public class EnemyCollision : MonoBehaviour
     {

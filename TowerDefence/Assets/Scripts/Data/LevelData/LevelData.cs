@@ -15,6 +15,9 @@ namespace Data.LevelData
         [Header("Player Settings")]
         public int PlayerHp;
         public int PlayerCoins;
+
+        [Header("Enemy Settings")] 
+        public EnemyData EnemyData;
         
         [Header("Tower selection buttons")]
         public TowerSelectionButtonsHolder TowerSelectionButtons;
