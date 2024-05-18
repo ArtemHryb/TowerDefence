@@ -1,4 +1,5 @@
-﻿using Architecture.Services;
+﻿using System;
+using Architecture.Services;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -24,6 +25,9 @@ namespace Enemy.Health
 
         private void OnDestroy() => 
             _enemyHealth.OnHealthChanged -= UpdateHealthBar;
+
+        private void LateUpdate() => 
+            transform.LookAt(Camera.main.transform);
 
         private void Initialize()
         {
