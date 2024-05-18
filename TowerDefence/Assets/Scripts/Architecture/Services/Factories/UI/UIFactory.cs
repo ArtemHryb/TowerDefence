@@ -81,6 +81,7 @@ namespace Architecture.Services.Factories.UI
 
         public void CreateLoseMenu()
         {
+            Object.Destroy(UIRoot.gameObject);
             UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
             
             _container.InstantiatePrefabForComponent<LoseMenu>
