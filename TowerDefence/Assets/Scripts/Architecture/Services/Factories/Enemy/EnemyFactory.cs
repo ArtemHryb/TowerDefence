@@ -1,5 +1,6 @@
 ﻿using Architecture.Services.Interfaces;
 using Data;
+using Enemy.Main;
 using UnityEngine;
 using Zenject;
 
@@ -7,7 +8,7 @@ namespace Architecture.Services.Factories.Enemy
 {
     public class EnemyFactory : IEnemyFactory
     {
-        public Transform EnemyParent { get; private set; }
+        public EnemyParent EnemyParent { get; private set; }
         private readonly IAssetProvider _assetProvider;
         private readonly DiContainer _container;
 
@@ -17,8 +18,13 @@ namespace Architecture.Services.Factories.Enemy
             _container = container;
         }
         public void CreateEnemyParent() =>
-            EnemyParent = Object.Instantiate(_assetProvider.Initialize<Transform>(AssetPath.EnemyParent));
-        public void CreateEnemy(string path, Vector3 at, Quaternion rotation,Transform parent) => 
-            _container.InstantiatePrefab(_assetProvider.Initialize<GameObject>(path), at, rotation, EnemyParent);
+            EnemyParent = Object.Instantiate(_assetProvider.Initialize<EnemyParent>(AssetPath.EnemyParent));
+        public void CreateEnemy(string path, Vector3 at, Quaternion rotation,EnemyParent parent)
+        {
+           global::Enemy.Enemy enemy = _container.InstantiatePrefabForComponent<global::Enemy.Enemy>(
+                _assetProvider.Initialize<global::Enemy.Enemy>(path), at, rotation, parent.transform);
+
+           parent.Enemies.Add(enemy);
+        }
     }
 }

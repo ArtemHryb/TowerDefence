@@ -1,4 +1,5 @@
 ﻿using System;
+using Tower.Bullets;
 using UnityEngine;
 
 namespace Tower
@@ -10,6 +11,8 @@ namespace Tower
 
         public GameObject TowerPrefab;
         public GameObject TowerGhostPrefab;
+        
+        public BulletInfo Bullet;
         
         public int Price;
         public int AttackRange;

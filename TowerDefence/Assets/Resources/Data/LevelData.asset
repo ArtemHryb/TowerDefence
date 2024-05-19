@@ -19,6 +19,10 @@ MonoBehaviour:
       type: 3}
     PlayerHp: 3
     PlayerCoins: 100
+    EnemyData:
+      MaxHp: 100
+      Speed: 3
+      KillBonus: 10
     TowerSelectionButtons:
       Buttons:
       - ButtonPrefab: {fileID: 4680010376749980596, guid: 5e0f4f24e47ae604ca6dcd0a8848c1d2,
@@ -29,9 +33,14 @@ MonoBehaviour:
             type: 3}
           TowerGhostPrefab: {fileID: 4978146501407319980, guid: 24c42055d55441345af516a5c9c3c340,
             type: 3}
+          Bullet:
+            Prefab: {fileID: 4042932769704639557, guid: 0eda220e0fcffb84dbf8c35fffffd479,
+              type: 3}
+            Damage: 20
+            Speed: 50
           Price: 20
           AttackRange: 30
-          FireSpeed: 5
+          FireSpeed: 1
     EnemyCount: 5
     Waves: 2
     DelayBeforeNextWave: 4
@@ -41,6 +50,10 @@ MonoBehaviour:
       type: 3}
     PlayerHp: 3
     PlayerCoins: 125
+    EnemyData:
+      MaxHp: 100
+      Speed: 3
+      KillBonus: 10
     TowerSelectionButtons:
       Buttons: []
     EnemyCount: 5

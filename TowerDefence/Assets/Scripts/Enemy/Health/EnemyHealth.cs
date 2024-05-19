@@ -1,6 +1,7 @@
 ﻿using System;
 using Architecture.Services;
 using Architecture.Services.Coin;
+using Enemy.Main;
 using UnityEngine;
 using Zenject;
 
@@ -12,7 +13,7 @@ namespace Enemy.Health
         public event Action OnDied;
 
         public int CurrentHp { get; private set; }
-        
+        [SerializeField] private Enemy _enemy;
         [SerializeField] private EnemyMovement _enemyMovement;
 
         private int _maxHp;
@@ -47,6 +48,7 @@ namespace Enemy.Health
         private void Die()
         {
             _coinService.GetBonus(_currentLevelSettingsProvider.GetCurrentLevelSettings().EnemyData.KillBonus);
+            GetComponentInParent<EnemyParent>().Enemies.Remove(_enemy);
             _enemyMovement.enabled = false;
             Destroy(gameObject);
             OnDied?.Invoke();

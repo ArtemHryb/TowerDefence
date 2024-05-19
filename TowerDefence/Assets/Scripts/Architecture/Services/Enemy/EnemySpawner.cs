@@ -48,7 +48,7 @@ namespace Architecture.Services.Enemy
             while (enemyCount > 0) 
             {
                 _enemyFactory.CreateEnemy(AssetPath.Solider, _currentLevelSettingsProvider.GetCurrentLevelSettings().Start.position,
-                    Quaternion.identity, null);
+                    Quaternion.identity, _enemyFactory.EnemyParent);
                 enemyCount--; 
                 yield return new WaitForSeconds(1f);
             }

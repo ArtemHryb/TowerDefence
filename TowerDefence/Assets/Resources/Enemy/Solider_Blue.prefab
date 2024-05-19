@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4801384285718293193}
   - component: {fileID: 411370670696798814}
   - component: {fileID: 4937580761937285681}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TB_Soldier_Swordman_Leg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 353222308484123648}
   - component: {fileID: 4649203819056706784}
   - component: {fileID: 1745149481072139199}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HeartIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: 0}
+  m_AnchoredPosition: {x: 25, y: 0}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4649203819056706784
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 5975402475779801685}
   - component: {fileID: 4178502358422607002}
   - component: {fileID: 3141058874196979114}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 1085101720027499764}
   - component: {fileID: 8152821498725360980}
   - component: {fileID: 4539272861556156843}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4262021578822541453}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
@@ -278,7 +278,7 @@ RectTransform:
   - {fileID: 6521665349315998977}
   - {fileID: 353222308484123648}
   m_Father: {fileID: 234678794963156557}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -327,11 +327,11 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 6521665349315998977}
   m_HandleRect: {fileID: 0}
-  m_Direction: 0
+  m_Direction: 1
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 99
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 11536595213847314}
   - component: {fileID: 303853349073141364}
   - component: {fileID: 1179331614712869336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TB_Soldier_Swordman_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 6633535939307849946}
   - component: {fileID: 8673681748897818951}
   - component: {fileID: 6130203842966856714}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   - component: {fileID: 6761627869464571221}
   - component: {fileID: 8099377441151985289}
   - component: {fileID: 4436626056088008326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +533,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6317736111321058037}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -543,7 +543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 5}
+  m_AnchoredPosition: {x: 0, y: 5.31}
   m_SizeDelta: {x: 50, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6761627869464571221
@@ -620,7 +620,7 @@ GameObject:
   - component: {fileID: 8583708387591474566}
   - component: {fileID: 8252317011529280324}
   - component: {fileID: 7107813665696773489}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TB_Soldier_Swordman_Leg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -703,7 +703,7 @@ GameObject:
   - component: {fileID: 6521665349315998977}
   - component: {fileID: 7820217634671414810}
   - component: {fileID: 3630639797449976024}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -779,12 +779,13 @@ GameObject:
   - component: {fileID: 2215817905187512461}
   - component: {fileID: 5653586139872611419}
   - component: {fileID: 343690521739644222}
+  - component: {fileID: 3340274635661988619}
   - component: {fileID: 244414763167029933}
   - component: {fileID: 4994358467736766537}
   - component: {fileID: 4067238078000604387}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Solider_Blue
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -876,6 +877,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3340274635661988619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7913891522175035748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf10f6111254015a50bc9f9a3f77372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &244414763167029933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,4 +926,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1029197f5eca478bb657ddc69e858f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemy: {fileID: 3340274635661988619}
   _enemyMovement: {fileID: 244414763167029933}

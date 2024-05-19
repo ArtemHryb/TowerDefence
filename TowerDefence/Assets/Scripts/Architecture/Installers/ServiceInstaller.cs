@@ -4,6 +4,7 @@ using Architecture.Services.Enemy;
 using Architecture.Services.Factories.Components;
 using Architecture.Services.Factories.Enemy;
 using Architecture.Services.Factories.Tower;
+using Architecture.Services.Factories.Tower.Bullet;
 using Architecture.Services.Factories.UI;
 using Architecture.Services.Interfaces;
 using Architecture.Services.Player;
@@ -38,7 +39,16 @@ namespace Architecture.Installers
             BindComponentFactory();
             BindEnemyFactory();
             BindTowerFactory();
+            BindBulletFactory();
             BindEnemySpawner();
+        }
+
+        private void BindBulletFactory()
+        {
+            Container
+                .Bind<IBulletFactory>()
+                .To<BulletFactory>()
+                .AsSingle();
         }
 
         private void BindComponentFactory()

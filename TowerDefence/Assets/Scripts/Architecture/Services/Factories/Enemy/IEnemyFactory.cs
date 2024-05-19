@@ -1,11 +1,12 @@
+using Enemy.Main;
 using UnityEngine;
 
 namespace Architecture.Services.Factories.Enemy
 {
     public interface IEnemyFactory
     {
-        Transform EnemyParent { get; }
+        EnemyParent EnemyParent { get; }
         void CreateEnemyParent();
-        void CreateEnemy(string path, Vector3 at, Quaternion rotation,Transform parent);
+        void CreateEnemy(string path, Vector3 at, Quaternion rotation,EnemyParent parent);
     }
 }
