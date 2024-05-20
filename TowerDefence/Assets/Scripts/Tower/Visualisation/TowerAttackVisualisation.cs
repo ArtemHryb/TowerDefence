@@ -8,7 +8,7 @@ namespace Tower.Visualisation
         [SerializeField] private float _attackRange = 30f;
         [SerializeField] private int _segments = 50;
         private LineRenderer _lineRenderer;
-
+        
         private void Awake()
         {
             _lineRenderer = GetComponent<LineRenderer>();

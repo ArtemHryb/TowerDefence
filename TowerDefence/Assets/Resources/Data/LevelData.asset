@@ -58,6 +58,22 @@ MonoBehaviour:
               type: 3}
             Damage: 25
             Speed: 47
+      - ButtonPrefab: {fileID: 4680010376749980596, guid: c63e69041d7cbf846a4f9522cd5ee5e6,
+          type: 3}
+        Tower:
+          TowerType: 2
+          TowerPrefab: {fileID: 3531789871039463353, guid: bae16721aee39c342b4a33028f2c6fc9,
+            type: 3}
+          TowerGhostPrefab: {fileID: 3663777064313510752, guid: deafe9206332c9c46b740923eb9e4fb1,
+            type: 3}
+          Price: 50
+          AttackRange: 25
+          FireSpeed: 2
+          Bullet:
+            Prefab: {fileID: 5955538181989918527, guid: b49956191cfc59c47a328085856b357d,
+              type: 3}
+            Damage: 15
+            Speed: 55
     EnemyCount: 5
     Waves: 2
     DelayBeforeNextWave: 4
