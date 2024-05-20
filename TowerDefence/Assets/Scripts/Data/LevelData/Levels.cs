@@ -2,7 +2,8 @@
 {
     public enum Levels
     {
-        Level1,
-        Level2,
+        None = 0,
+        Level1 = 1,
+        Level2 = 2,
     }
 }

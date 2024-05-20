@@ -4,6 +4,8 @@ using Data.LevelData;
 using Tower.Selection;
 using UI;
 using UI.InGame;
+using UI.InGame.Lose;
+using UI.InGame.Victory;
 using UnityEngine;
 using Zenject;
 
@@ -86,9 +88,21 @@ namespace Architecture.Services.Factories.UI
             
             _container.InstantiatePrefabForComponent<LoseMenu>
                 (_assetProvider.Initialize<LoseMenu>(AssetPath.LoseMenu), UIRoot);
+            
             Time.timeScale = 0;
         }
-        
+
+        public void CreateVictoryMenu()
+        {
+            Object.Destroy(UIRoot.gameObject);
+            UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
+            
+            _container.InstantiatePrefabForComponent<VictoryMenu>
+                (_assetProvider.Initialize<VictoryMenu>(AssetPath.VictoryMenu), UIRoot);
+            
+            Time.timeScale = 0;
+        }
+
         private Transform CreateParent(Transform parent) => 
             Object.Instantiate(parent);
         

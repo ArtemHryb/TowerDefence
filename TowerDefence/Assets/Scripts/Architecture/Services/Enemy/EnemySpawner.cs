@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Architecture.Services.Factories.Enemy;
+using Architecture.Services.Victory;
 using Architecture.States.Interfaces;
 using Data;
 using UnityEngine;
@@ -11,13 +12,15 @@ namespace Architecture.Services.Enemy
         private readonly IEnemyFactory _enemyFactory;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly ICurrentLevelSettingsProvider _currentLevelSettingsProvider;
+        private readonly IVictoryChecker _victoryChecker;
 
         public EnemySpawner(IEnemyFactory enemyFactory,ICoroutineRunner coroutineRunner
-            ,ICurrentLevelSettingsProvider currentLevelSettingsProvider)
+            ,ICurrentLevelSettingsProvider currentLevelSettingsProvider, IVictoryChecker victoryChecker)
         {
             _enemyFactory = enemyFactory;
             _coroutineRunner = coroutineRunner;
             _currentLevelSettingsProvider = currentLevelSettingsProvider;
+            _victoryChecker = victoryChecker;
         }
         public void SpawnEnemies(int count)
         {
@@ -29,6 +32,8 @@ namespace Architecture.Services.Enemy
         {
             _enemyFactory.CreateEnemyParent();
             _coroutineRunner.StartCoroutine(SpawnWave(count, waves,delay));
+
+            _coroutineRunner.StartCoroutine(_victoryChecker.Check());
         }
 
         private IEnumerator SpawnWave(int enemyCount,int waves,float delay)

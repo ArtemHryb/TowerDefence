@@ -11,11 +11,10 @@ namespace Tower
 
         public GameObject TowerPrefab;
         public GameObject TowerGhostPrefab;
-        
-        public BulletInfo Bullet;
-        
         public int Price;
         public int AttackRange;
         public float FireSpeed;
+
+        public BulletInfo Bullet;
     }
 }

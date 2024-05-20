@@ -8,7 +8,9 @@ namespace Data.LevelData
     public class LevelData
     {
         [Header("Level Settings")]
-        public Levels LevelId;
+        public Levels CurrentLevel;
+        public Levels NextLevel;
+        
         public Transform Start;
         public Transform Finish;
         
@@ -26,7 +28,5 @@ namespace Data.LevelData
         public int EnemyCount;
         public int Waves;
         public float DelayBeforeNextWave;
-
-
     }
 }

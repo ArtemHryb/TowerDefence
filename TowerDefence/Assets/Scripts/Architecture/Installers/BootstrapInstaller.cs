@@ -22,6 +22,7 @@ namespace Architecture.Installers
             Container.Bind<LoadMainMenuState>().AsSingle();
             Container.Bind<LoadGameState>().AsSingle();
             Container.Bind<GameOverState>().AsSingle();
+            Container.Bind<VictoryState>().AsSingle();
         }
         
         private void AddStatesToStateMachine()
@@ -30,6 +31,7 @@ namespace Architecture.Installers
             stateMachine.States.Add(typeof(LoadMainMenuState),Container.Resolve<LoadMainMenuState>());
             stateMachine.States.Add(typeof(LoadGameState),Container.Resolve<LoadGameState>());
             stateMachine.States.Add(typeof(GameOverState),Container.Resolve<GameOverState>());
+            stateMachine.States.Add(typeof(VictoryState),Container.Resolve<VictoryState>());
         }
         private void BindStateMachine()
         {

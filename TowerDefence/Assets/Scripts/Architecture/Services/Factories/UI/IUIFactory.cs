@@ -10,5 +10,6 @@ namespace Architecture.Services.Factories.UI
         void CreateMainMenu();
         void CreateInGameMenu();
         void CreateLoseMenu();
+        void CreateVictoryMenu();
     }
 }

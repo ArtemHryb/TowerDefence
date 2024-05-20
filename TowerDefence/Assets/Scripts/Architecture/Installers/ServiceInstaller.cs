@@ -8,6 +8,7 @@ using Architecture.Services.Factories.Tower.Bullet;
 using Architecture.Services.Factories.UI;
 using Architecture.Services.Interfaces;
 using Architecture.Services.Player;
+using Architecture.Services.Victory;
 using Architecture.States;
 using Architecture.States.Interfaces;
 using Data.LevelData;
@@ -41,6 +42,15 @@ namespace Architecture.Installers
             BindTowerFactory();
             BindBulletFactory();
             BindEnemySpawner();
+            BindVictoryChecker();
+        }
+
+        private void BindVictoryChecker()
+        {
+            Container
+                .Bind<IVictoryChecker>()
+                .To<VictoryChecker>()
+                .AsSingle();
         }
 
         private void BindBulletFactory()

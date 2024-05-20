@@ -29,7 +29,7 @@ namespace UI.InGame
         private void Spawn()
         {
             _button.interactable = false;
-            if (SceneManager.GetActiveScene().name == _currentLevel.GetCurrentLevelSettings().LevelId.ToString())
+            if (SceneManager.GetActiveScene().name == _currentLevel.GetCurrentLevelSettings().CurrentLevel.ToString())
             {
                 _enemySpawner.SpawnEnemies(_currentLevel.GetCurrentLevelSettings().EnemyCount
                     ,_currentLevel.GetCurrentLevelSettings().Waves

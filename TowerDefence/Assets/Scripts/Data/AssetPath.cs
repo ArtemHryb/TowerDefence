@@ -8,6 +8,8 @@
         public const string DisplayCoinsCount = "UI/OnLevel/PlayerCoins";
         public const string SpawnEnemy = "UI/OnLevel/SpawnEnemy";
         public const string LoseMenu = "UI/OnLevel/LoseMenu";
+        public const string VictoryMenu = "UI/OnLevel/VictoryMenu";
+        
 
         public const string MainLevelComponentsParent = "MainLevelComponentsParent";
         

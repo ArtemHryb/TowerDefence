@@ -18,7 +18,7 @@ namespace Architecture.Services
             
             foreach (LevelData level in _levelSettings.Levels)
             {
-                if (level.LevelId.ToString() == SceneManager.GetActiveScene().name)
+                if (level.CurrentLevel.ToString() == SceneManager.GetActiveScene().name)
                 {
                     levelData = level;
                     return levelData;

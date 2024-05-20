@@ -17,7 +17,7 @@ namespace Tower.Shooting
 
         [Inject]
         public void Construct(IBulletFactory bulletFactory) => 
-            _bulletFactory = bulletFactory;
+                _bulletFactory = bulletFactory;
 
         public void Shoot()
         {
