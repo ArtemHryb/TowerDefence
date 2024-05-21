@@ -1,6 +1,7 @@
 ﻿using Architecture.Services.Interfaces;
 using Data;
 using Data.LevelData;
+using Data.Windows;
 using Tower.Selection;
 using UI;
 using UI.InGame;
@@ -102,6 +103,41 @@ namespace Architecture.Services.Factories.UI
                 (_assetProvider.Initialize<VictoryMenu>(AssetPath.VictoryMenu), UIRoot);
             
             Time.timeScale = 0;
+        }
+
+        public void CreateLevelSelection()
+        {
+            UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
+            
+            LevelSelectionWindow window = _container.InstantiatePrefabForComponent<LevelSelectionWindow>
+                (_assetProvider.Initialize<LevelSelectionWindow>(AssetPath.LevelSelectionWindow), UIRoot);
+            
+            CreateLevelTransferButtons(window);
+        }
+
+        private void CreateLevelTransferButtons(LevelSelectionWindow window)
+        {
+            foreach (LevelTransferButtonMarker marker in window.Markers)
+            {
+                foreach (LevelData level in _levelsSettings.Levels)
+                {
+                    if (level.CurrentLevel == marker.Id) 
+                        marker.IsOpened = level.IsLevelOpened;
+
+                    if (marker.IsOpened)
+                    {
+                        LevelTransferButton button = _container.InstantiatePrefabForComponent<LevelTransferButton>(marker.OpenedButton,
+                            marker.transform.position, Quaternion.identity, marker.transform);
+                        
+                        button.LevelId = marker.Id;
+                    }
+                    else
+                    {
+                        _container.InstantiatePrefab(marker.ClosedButton,
+                            marker.transform.position, Quaternion.identity, marker.transform);
+                    }
+                }
+            }
         }
 
         private Transform CreateParent(Transform parent) => 

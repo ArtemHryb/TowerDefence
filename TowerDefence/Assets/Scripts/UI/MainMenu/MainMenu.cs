@@ -1,5 +1,4 @@
-﻿using Architecture.States;
-using Architecture.States.Interfaces;
+﻿using Architecture.Services.Factories.UI;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -8,16 +7,16 @@ namespace UI.MainMenu
 {
     public class MainMenu : MonoBehaviour
     {
-        private IStateMachine _stateMachine;
-        
         [Header("Buttons")] 
         [SerializeField] private Button _playButton;
         [SerializeField] private Button _exitButton;
         
+        private IUIFactory _uiFactory;
+        
         [Inject]
-        public void Construct(IStateMachine stateMachine)
+        public void Construct(IUIFactory uiFactory)
         {
-            _stateMachine = stateMachine;
+            _uiFactory = uiFactory;
         }
         
         private void Awake()
@@ -28,7 +27,7 @@ namespace UI.MainMenu
 
         private void Play()
         {
-            _stateMachine.Enter<LoadGameState>();
+          _uiFactory.CreateLevelSelection();
         }
 
         private void Exit() => 

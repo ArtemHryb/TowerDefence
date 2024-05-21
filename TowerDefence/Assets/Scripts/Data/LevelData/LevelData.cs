@@ -11,6 +11,8 @@ namespace Data.LevelData
         public Levels CurrentLevel;
         public Levels NextLevel;
         
+        public bool IsLevelOpened;
+        
         public Transform Start;
         public Transform Finish;
         

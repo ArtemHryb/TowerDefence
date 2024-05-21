@@ -1,6 +1,7 @@
 ﻿using Architecture.States;
 using Architecture.States.Interfaces;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Zenject;
 
@@ -25,7 +26,7 @@ namespace UI.InGame.Lose
 
         private void RestartButton()
         {
-            _stateMachine.Enter<LoadGameState>();
+            _stateMachine.Enter<LoadLevelState,string>(SceneManager.GetActiveScene().name);
             Time.timeScale = 1;
         }
 

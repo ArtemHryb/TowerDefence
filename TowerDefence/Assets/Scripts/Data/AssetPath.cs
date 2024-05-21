@@ -4,6 +4,8 @@
     {
         public const string UIRoot = "UI/UIRoot";
         public const string MainMenu = "UI/MainMenu/MainMenu";
+        public const string LevelSelectionWindow = "UI/MainMenu/LevelSelectionWindow";
+        
         public const string DisplayPlayerHp = "UI/OnLevel/PlayerHp";
         public const string DisplayCoinsCount = "UI/OnLevel/PlayerCoins";
         public const string SpawnEnemy = "UI/OnLevel/SpawnEnemy";

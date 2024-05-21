@@ -6,13 +6,13 @@ using SceneManagement;
 
 namespace Architecture.States
 {
-    public class LoadGameState : IState
+    public class InitializeGameWorldState : IState
     {
         private readonly ISceneLoader _sceneLoader;
         private readonly IUIFactory _uiFactory;
         private readonly IComponentFactory _componentFactory;
 
-        public LoadGameState(ISceneLoader sceneLoader, IUIFactory uiFactory, 
+        public InitializeGameWorldState(ISceneLoader sceneLoader, IUIFactory uiFactory, 
             IComponentFactory componentFactory)
         {
             _sceneLoader = sceneLoader;

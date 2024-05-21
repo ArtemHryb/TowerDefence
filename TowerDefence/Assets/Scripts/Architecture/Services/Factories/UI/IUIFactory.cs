@@ -1,3 +1,4 @@
+using Data.Windows;
 using Tower.Selection;
 using UnityEngine;
 
@@ -11,5 +12,6 @@ namespace Architecture.Services.Factories.UI
         void CreateInGameMenu();
         void CreateLoseMenu();
         void CreateVictoryMenu();
+        void CreateLevelSelection();
     }
 }

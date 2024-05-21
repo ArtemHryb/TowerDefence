@@ -70,7 +70,7 @@ MonoBehaviour:
           AttackRange: 25
           FireSpeed: 2
           Bullet:
-            Prefab: {fileID: 5955538181989918527, guid: b49956191cfc59c47a328085856b357d,
+            Prefab: {fileID: 3870033980750357770, guid: 0c68e359bfcf607439fa907dcb4edeeb,
               type: 3}
             Damage: 15
             Speed: 55
