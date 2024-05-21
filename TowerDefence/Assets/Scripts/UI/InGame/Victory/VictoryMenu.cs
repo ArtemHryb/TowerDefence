@@ -1,6 +1,8 @@
 ﻿using Architecture.Services;
+using Architecture.Services.Audio;
 using Architecture.States;
 using Architecture.States.Interfaces;
+using Audio;
 using Data.LevelData;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,11 +17,15 @@ namespace UI.InGame.Victory
         
         private IStateMachine _stateMachine;
         private ICurrentLevelSettingsProvider _currentLevelSettingsProvider;
+        private IAudioService _audioService;
+        
         [Inject]
-        public void Construct(IStateMachine stateMachine, ICurrentLevelSettingsProvider currentLevelSettingsProvider)
+        public void Construct(IStateMachine stateMachine, ICurrentLevelSettingsProvider currentLevelSettingsProvider,
+            IAudioService audioService)
         {
             _stateMachine = stateMachine;
             _currentLevelSettingsProvider = currentLevelSettingsProvider;
+            _audioService = audioService;
         }
         private void Awake()
         {
@@ -29,6 +35,7 @@ namespace UI.InGame.Victory
 
         private void NextLevelButton()
         {
+            _audioService.PlaySfx(SfxType.Click);
             if (_currentLevelSettingsProvider
                     .GetCurrentLevelSettings().NextLevel == Levels.None)
                 _stateMachine.Enter<LoadMainMenuState>();
@@ -42,6 +49,7 @@ namespace UI.InGame.Victory
 
         private void MainMenuButton()
         {
+            _audioService.PlaySfx(SfxType.Click);
             _stateMachine.Enter<LoadMainMenuState>();
             Time.timeScale = 1;
         }

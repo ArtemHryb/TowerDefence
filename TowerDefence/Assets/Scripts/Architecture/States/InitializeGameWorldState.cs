@@ -1,4 +1,6 @@
-﻿using Architecture.Services.Coin;
+﻿using Architecture.Services;
+using Architecture.Services.Audio;
+using Architecture.Services.Coin;
 using Architecture.Services.Factories.Components;
 using Architecture.Services.Factories.UI;
 using Architecture.Services.Player;
@@ -13,15 +15,21 @@ namespace Architecture.States
         private readonly IComponentFactory _componentFactory;
         private readonly ICoinService _coinService;
         private readonly IPlayerHpService _playerHpService;
+        private readonly IAudioService _audioService;
+        private readonly ICurrentLevelSettingsProvider _currentLevelSettingsProvider;
 
         public InitializeGameWorldState(IStateMachine stateMachine, IUIFactory uiFactory, 
-            IComponentFactory componentFactory, ICoinService coinService, IPlayerHpService playerHpService)
+            IComponentFactory componentFactory, ICoinService coinService
+            ,IPlayerHpService playerHpService, IAudioService audioService,
+            ICurrentLevelSettingsProvider currentLevelSettingsProvider)
         {
             _stateMachine = stateMachine;
             _uiFactory = uiFactory;
             _componentFactory = componentFactory;
             _coinService = coinService;
             _playerHpService = playerHpService;
+            _audioService = audioService;
+            _currentLevelSettingsProvider = currentLevelSettingsProvider;
         }
         public void Exit()
         {
@@ -35,6 +43,7 @@ namespace Architecture.States
 
         private void InitGame()
         {
+            _audioService.PlayMusic(_currentLevelSettingsProvider.GetCurrentLevelSettings().MusicType);
             _uiFactory.CreateInGameMenu();
             _componentFactory.InstantiateComponents();
             _coinService.SetCoins();

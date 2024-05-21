@@ -1,4 +1,6 @@
-﻿using Architecture.States.Interfaces;
+﻿using Architecture.Services;
+using Architecture.Services.Audio;
+using Architecture.States.Interfaces;
 using SceneManagement;
 
 namespace Architecture.States
@@ -23,7 +25,9 @@ namespace Architecture.States
             _sceneLoader.Load(nextScene, OnLoaded);
         }
 
-        private void OnLoaded() =>
+        private void OnLoaded()
+        {
             _stateMachine.Enter<InitializeGameWorldState>();
+        }
     }
 }

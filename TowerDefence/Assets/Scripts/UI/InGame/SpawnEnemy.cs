@@ -1,5 +1,7 @@
 using Architecture.Services;
+using Architecture.Services.Audio;
 using Architecture.Services.Enemy;
+using Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,13 +15,15 @@ namespace UI.InGame
     
         private IEnemySpawner _enemySpawner;
         private ICurrentLevelSettingsProvider _currentLevel;
+        private IAudioService _audioService;
     
         [Inject]
-        private void Construct(IEnemySpawner enemySpawner
-            ,ICurrentLevelSettingsProvider currentLevelSettingsProvider)
+        private void Construct(IEnemySpawner enemySpawner,ICurrentLevelSettingsProvider currentLevelSettingsProvider
+        ,IAudioService audioService)
         {
             _enemySpawner = enemySpawner;
             _currentLevel = currentLevelSettingsProvider;
+            _audioService = audioService;
         }
         private void Awake()
         {
@@ -28,6 +32,7 @@ namespace UI.InGame
 
         private void Spawn()
         {
+            _audioService.PlaySfx(SfxType.StartAttack);
             _button.interactable = false;
             if (SceneManager.GetActiveScene().name == _currentLevel.GetCurrentLevelSettings().CurrentLevel.ToString())
             {

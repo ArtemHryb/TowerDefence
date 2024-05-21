@@ -1,4 +1,5 @@
 ﻿using System;
+using Audio;
 using Data.TowerSelection;
 using UnityEngine;
 
@@ -30,5 +31,8 @@ namespace Data.LevelData
         public int EnemyCount;
         public int Waves;
         public float DelayBeforeNextWave;
+        
+        [Header("Music")]
+        public MusicType MusicType;
     }
 }

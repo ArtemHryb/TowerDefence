@@ -1,6 +1,8 @@
 ﻿using Architecture.Services;
+using Architecture.Services.Audio;
 using Architecture.Services.Coin;
 using Architecture.Services.Enemy;
+using Architecture.Services.Factories.Audio;
 using Architecture.Services.Factories.Components;
 using Architecture.Services.Factories.Enemy;
 using Architecture.Services.Factories.Tower;
@@ -28,6 +30,9 @@ namespace Architecture.Installers
             BindSceneLoader();
             BindCoroutineRunner();
             BindAssetProvider();
+
+            BindAudioFactory();
+            BindAudioService();
             
             BindUIFactory();
             BindLevelsSettings();
@@ -43,6 +48,22 @@ namespace Architecture.Installers
             BindBulletFactory();
             BindEnemySpawner();
             BindVictoryChecker();
+        }
+
+        private void BindAudioService()
+        {
+            Container
+                .Bind<IAudioService>()
+                .To<AudioService>()
+                .AsSingle();
+        }
+
+        private void BindAudioFactory()
+        {
+            Container
+                .Bind<IAudioFactory>()
+                .To<AudioFactory>()
+                .AsSingle();
         }
 
         private void BindVictoryChecker()

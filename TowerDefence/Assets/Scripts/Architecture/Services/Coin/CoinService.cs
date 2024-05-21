@@ -5,7 +5,7 @@ namespace Architecture.Services.Coin
     public class CoinService : ICoinService
     {
         private readonly ICurrentLevelSettingsProvider _currentLevelSettingsProvider;
-        
+
         public event Action OnCoinsChanged;
         public int Coins { get; private set; }
 

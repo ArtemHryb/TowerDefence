@@ -1,4 +1,5 @@
 ﻿using Architecture.Services;
+using Audio;
 using Tower.Selection;
 using UnityEngine;
 using Zenject;
@@ -14,6 +15,8 @@ namespace Tower
         public int BulletSpeed { get; private set; }
         
         [SerializeField] private TowerType _towerType;
+        
+        public SfxType SfxType;
 
         private ICurrentLevelSettingsProvider _currentLevelSettingsProvider;
 

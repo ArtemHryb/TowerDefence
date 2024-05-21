@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _towerType: 0
+  SfxType: 1
 --- !u!114 &7446460473201331890
 MonoBehaviour:
   m_ObjectHideFlags: 0

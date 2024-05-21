@@ -1,5 +1,7 @@
-﻿using Architecture.States;
+﻿using Architecture.Services.Audio;
+using Architecture.States;
 using Architecture.States.Interfaces;
+using Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,12 +13,15 @@ namespace UI.InGame.Lose
     {
         [SerializeField] private Button _mainMenuButton;
         [SerializeField] private Button _restartButton;
+        
         private IStateMachine _stateMachine;
+        private IAudioService _audioService;
         
         [Inject]
-        public void Construct(IStateMachine stateMachine)
+        public void Construct(IStateMachine stateMachine, IAudioService audioService)
         {
             _stateMachine = stateMachine;
+            _audioService = audioService;
         }
         private void Awake()
         {
@@ -26,12 +31,14 @@ namespace UI.InGame.Lose
 
         private void RestartButton()
         {
+            _audioService.PlaySfx(SfxType.Click);
             _stateMachine.Enter<LoadLevelState,string>(SceneManager.GetActiveScene().name);
             Time.timeScale = 1;
         }
 
         private void MainMenuButton()
         {
+            _audioService.PlaySfx(SfxType.Click);
             _stateMachine.Enter<LoadMainMenuState>();
             Time.timeScale = 1;
         }

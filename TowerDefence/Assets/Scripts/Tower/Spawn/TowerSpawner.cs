@@ -1,6 +1,9 @@
-﻿using Architecture.Services.Coin;
+﻿using Architecture.Services.Audio;
+using Architecture.Services.Coin;
+using Architecture.Services.Factories.Audio;
 using Architecture.Services.Factories.Tower;
 using Architecture.Services.Factories.UI;
+using Audio;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -16,21 +19,25 @@ namespace Tower.Spawn
         private ICoinService _coinService;
         private IUIFactory _uiFactory;
         private PlayerInput _input;
+        private IAudioService _audioService;
         
         private Vector3 _worldPosition;
 
         [Inject]
         public void Construct(ITowerFactory towerFactory, ICoinService localCoinService,
-            PlayerInput input, IUIFactory uiFactory)
+            PlayerInput input, IUIFactory uiFactory,IAudioService audioService)
         {
             _towerFactory = towerFactory;
             _coinService = localCoinService;
             _uiFactory = uiFactory;
             _input = input;
+            _audioService = audioService;
         }
 
         private void SpawnTower(InputAction.CallbackContext context)
         {
+            
+            
             if (IsPointerOverUI())
                 return;
             
@@ -41,13 +48,14 @@ namespace Tower.Spawn
 
             if (_coinService.Coins >= _uiFactory.TowerSelection.SelectedButton?.Tower.Price)
             {
+                _audioService.PlaySfx(SfxType.SpawnTower);
                 _coinService.Buy(_uiFactory.TowerSelection.SelectedButton.Tower.Price);
                 _towerFactory.CreateTower(_uiFactory.TowerSelection.SelectedButton.Tower.TowerPrefab, _worldPosition, 
                     Quaternion.identity, transform);
             }
             else
-            {
-                Debug.Log("Not enough money");
+            { 
+                _audioService.PlaySfx(SfxType.NotEnoughMoney);
             }
         }
 
