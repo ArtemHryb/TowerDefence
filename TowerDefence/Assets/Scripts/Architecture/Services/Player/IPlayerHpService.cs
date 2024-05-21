@@ -7,5 +7,6 @@ namespace Architecture.Services.Player
         event Action OnHpChanged;
         int Hp { get; }
         void TakeDamage(int damage);
+        void SetHp();
     }
 }

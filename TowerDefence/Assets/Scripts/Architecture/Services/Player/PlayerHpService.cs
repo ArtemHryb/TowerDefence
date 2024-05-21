@@ -16,7 +16,6 @@ namespace Architecture.Services.Player
         {
             _currentLevelSettingsProvider = currentLevelSettingsProvider;
             _stateMachine = stateMachine;
-            SetHp();
         }
 
         public void TakeDamage(int damage)
@@ -26,8 +25,8 @@ namespace Architecture.Services.Player
             if (Hp<= 0) 
                 _stateMachine.Enter<GameOverState>();
         }
-        
-        private void SetHp() => 
+
+        public void SetHp() => 
             Hp = _currentLevelSettingsProvider.GetCurrentLevelSettings().PlayerHp;
     }
 }

@@ -12,7 +12,6 @@ namespace Architecture.Services.Coin
         public CoinService(ICurrentLevelSettingsProvider currentLevelSettingsProvider)
         {
             _currentLevelSettingsProvider = currentLevelSettingsProvider;
-            SetCoins();
         }
 
         public void Buy(int price)

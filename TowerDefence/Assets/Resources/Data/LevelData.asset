@@ -15,15 +15,65 @@ MonoBehaviour:
   Levels:
   - CurrentLevel: 1
     NextLevel: 2
+    IsLevelOpened: 1
     Start: {fileID: 6942413578144346079, guid: 25a81d27b795bfc4aa798f8d5b47cc0d, type: 3}
     Finish: {fileID: 4049698592204863426, guid: 371720d7aadd2444d9b92b7c2745805f,
       type: 3}
     PlayerHp: 3
-    PlayerCoins: 100
+    PlayerCoins: 60
     EnemyData:
       MaxHp: 100
       Speed: 3
       KillBonus: 10
+    TowerSelectionButtons:
+      Buttons:
+      - ButtonPrefab: {fileID: 4680010376749980596, guid: 5e0f4f24e47ae604ca6dcd0a8848c1d2,
+          type: 3}
+        Tower:
+          TowerType: 0
+          TowerPrefab: {fileID: 8480562181185951144, guid: cb9d9b4790d64b64fa22293f8a873b4e,
+            type: 3}
+          TowerGhostPrefab: {fileID: 4978146501407319980, guid: 24c42055d55441345af516a5c9c3c340,
+            type: 3}
+          Price: 20
+          AttackRange: 30
+          FireSpeed: 1
+          Bullet:
+            Prefab: {fileID: 4042932769704639557, guid: 0eda220e0fcffb84dbf8c35fffffd479,
+              type: 3}
+            Damage: 15
+            Speed: 50
+      - ButtonPrefab: {fileID: 4680010376749980596, guid: 4f585a7266be99846a5ef4eb64d05fce,
+          type: 3}
+        Tower:
+          TowerType: 1
+          TowerPrefab: {fileID: 2454435813384630001, guid: 1faca05e52e3302439a6d0a8544c04e5,
+            type: 3}
+          TowerGhostPrefab: {fileID: 7510401733250579427, guid: 683c004c00f2a4147b744c983f7e9a0f,
+            type: 3}
+          Price: 30
+          AttackRange: 35
+          FireSpeed: 0.75
+          Bullet:
+            Prefab: {fileID: 5955538181989918527, guid: b49956191cfc59c47a328085856b357d,
+              type: 3}
+            Damage: 25
+            Speed: 47
+    EnemyCount: 5
+    Waves: 2
+    DelayBeforeNextWave: 4
+  - CurrentLevel: 2
+    NextLevel: 0
+    IsLevelOpened: 0
+    Start: {fileID: 6942413578144346079, guid: 25a81d27b795bfc4aa798f8d5b47cc0d, type: 3}
+    Finish: {fileID: 4049698592204863426, guid: 371720d7aadd2444d9b92b7c2745805f,
+      type: 3}
+    PlayerHp: 3
+    PlayerCoins: 70
+    EnemyData:
+      MaxHp: 125
+      Speed: 5
+      KillBonus: 5
     TowerSelectionButtons:
       Buttons:
       - ButtonPrefab: {fileID: 4680010376749980596, guid: 5e0f4f24e47ae604ca6dcd0a8848c1d2,
@@ -72,24 +122,8 @@ MonoBehaviour:
           Bullet:
             Prefab: {fileID: 3870033980750357770, guid: 0c68e359bfcf607439fa907dcb4edeeb,
               type: 3}
-            Damage: 15
-            Speed: 55
-    EnemyCount: 5
-    Waves: 2
-    DelayBeforeNextWave: 4
-  - CurrentLevel: 2
-    NextLevel: 0
-    Start: {fileID: 6942413578144346079, guid: 25a81d27b795bfc4aa798f8d5b47cc0d, type: 3}
-    Finish: {fileID: 4049698592204863426, guid: 371720d7aadd2444d9b92b7c2745805f,
-      type: 3}
-    PlayerHp: 3
-    PlayerCoins: 125
-    EnemyData:
-      MaxHp: 100
-      Speed: 3
-      KillBonus: 10
-    TowerSelectionButtons:
-      Buttons: []
-    EnemyCount: 5
+            Damage: 13
+            Speed: 65
+    EnemyCount: 8
     Waves: 3
     DelayBeforeNextWave: 3

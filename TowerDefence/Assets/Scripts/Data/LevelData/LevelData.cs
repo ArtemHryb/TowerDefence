@@ -13,8 +13,8 @@ namespace Data.LevelData
         
         public bool IsLevelOpened;
         
-        public Transform Start;
-        public Transform Finish;
+        public Vector3 Start;
+        public Vector3 Finish;
         
         [Header("Player Settings")]
         public int PlayerHp;

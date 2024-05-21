@@ -14,10 +14,12 @@ namespace Enemy
         public void Construct(ICurrentLevelSettingsProvider currentLevelSettingsProvider) => 
             _currentLevelSettingsProvider = currentLevelSettingsProvider;
 
-        private void Start() => 
+        private void Start()
+        {
             MoveToFinish(_currentLevelSettingsProvider.GetCurrentLevelSettings().Finish);
+        }
 
-        private void MoveToFinish(Transform finish) => 
-            _agent.SetDestination(finish.position);
+        private void MoveToFinish(Vector3 finish) => 
+            _agent.SetDestination(finish);
     }
 }

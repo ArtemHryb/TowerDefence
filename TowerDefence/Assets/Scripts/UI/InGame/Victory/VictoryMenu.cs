@@ -1,5 +1,7 @@
-﻿using Architecture.States;
+﻿using Architecture.Services;
+using Architecture.States;
 using Architecture.States.Interfaces;
+using Data.LevelData;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -12,11 +14,12 @@ namespace UI.InGame.Victory
         [SerializeField] private Button _nextLevelButton;
         
         private IStateMachine _stateMachine;
-        
+        private ICurrentLevelSettingsProvider _currentLevelSettingsProvider;
         [Inject]
-        public void Construct(IStateMachine stateMachine)
+        public void Construct(IStateMachine stateMachine, ICurrentLevelSettingsProvider currentLevelSettingsProvider)
         {
             _stateMachine = stateMachine;
+            _currentLevelSettingsProvider = currentLevelSettingsProvider;
         }
         private void Awake()
         {
@@ -26,8 +29,15 @@ namespace UI.InGame.Victory
 
         private void NextLevelButton()
         {
-            // _stateMachine.Enter<LoadGameState>();
-            // Time.timeScale = 1;
+            if (_currentLevelSettingsProvider
+                    .GetCurrentLevelSettings().NextLevel == Levels.None)
+                _stateMachine.Enter<LoadMainMenuState>();
+            else
+                _stateMachine
+                    .Enter<LoadLevelState, string>(_currentLevelSettingsProvider
+                        .GetCurrentLevelSettings().NextLevel.ToString());
+
+            Time.timeScale = 1f;
         }
 
         private void MainMenuButton()
