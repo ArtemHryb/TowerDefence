@@ -3,7 +3,6 @@ using Data;
 using Data.LevelData;
 using Data.Windows;
 using Tower.Selection;
-using UI;
 using UI.InGame;
 using UI.InGame.Lose;
 using UI.InGame.Victory;
@@ -23,7 +22,8 @@ namespace Architecture.Services.Factories.UI
         private readonly ICurrentLevelSettingsProvider _currentLevelSettingsProvider;
         private readonly IAssetProvider _assetProvider;
 
-        public UIFactory(IAssetProvider assetProvider, DiContainer container,ICurrentLevelSettingsProvider currentLevelSettingsProvider)
+        public UIFactory(IAssetProvider assetProvider, DiContainer container
+            ,ICurrentLevelSettingsProvider currentLevelSettingsProvider)
         {
             _assetProvider = assetProvider;
             _container = container;
@@ -42,32 +42,60 @@ namespace Architecture.Services.Factories.UI
         public void CreateInGameMenu()
         {
             CreateUIRoot();
-            CreateSpawnEnemy();
             CreatePlayerHPView();
             CreatePlayerCoinsView();
-            
+            CreateSpawnEnemy();
+
             CreateTowerSelection(); 
             CreateTowerSelectionButtons(TowerSelection);
         }
 
-        private void CreatePlayerCoinsView() =>
-            _container.InstantiatePrefabForComponent<DisplayCoinsCount>
-                (_assetProvider.Initialize<DisplayCoinsCount>(AssetPath.DisplayCoinsCount), UIRoot);
-
-        private void CreatePlayerHPView() =>
-            _container.InstantiatePrefabForComponent<DisplayPlayerHp>
+        private void CreatePlayerHPView()
+        {
+           DisplayPlayerHp playerHp =  _container.InstantiatePrefabForComponent<DisplayPlayerHp>
                 (_assetProvider.Initialize<DisplayPlayerHp>(AssetPath.DisplayPlayerHp), UIRoot);
+           
+           playerHp.transform.localScale = new Vector3(0f, 0f, 0f);
+           
+           LeanTween.scale(playerHp.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
+               .setDelay(0.1f).setEaseOutElastic();
+        }
 
-        private void CreateSpawnEnemy() =>
-            _container.InstantiatePrefabForComponent<SpawnEnemy>
-                (_assetProvider.Initialize<SpawnEnemy>(AssetPath.SpawnEnemy),UIRoot);
+        private void CreatePlayerCoinsView()
+        {
+            DisplayCoinsCount coins = _container.InstantiatePrefabForComponent<DisplayCoinsCount>
+                (_assetProvider.Initialize<DisplayCoinsCount>(AssetPath.DisplayCoinsCount), UIRoot);
+            
+            coins.transform.localScale = new Vector3(0f, 0f, 0f);
+            
+            LeanTween.scale(coins.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
+                .setDelay(0.2f).setEaseOutElastic();
+        }
+
+        private void CreateSpawnEnemy()
+        {
+            SpawnEnemy spawnEnemy = _container.InstantiatePrefabForComponent<SpawnEnemy>
+                (_assetProvider.Initialize<SpawnEnemy>(AssetPath.SpawnEnemy), UIRoot);
+            
+            spawnEnemy.transform.localScale = new Vector3(0f, 0f, 0f);
+            
+            LeanTween.scale(spawnEnemy.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
+                .setDelay(0.3f).setEaseOutElastic();
+        }
 
         private void CreateUIRoot() => 
             UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
 
-        private void CreateTowerSelection() =>
-           TowerSelection = _container.InstantiatePrefabForComponent<TowerSelection>
+        private void CreateTowerSelection()
+        {
+            TowerSelection = _container.InstantiatePrefabForComponent<TowerSelection>
                 (_assetProvider.Initialize<TowerSelection>(AssetPath.TowerSelection), UIRoot);
+            
+            TowerSelection.transform.localScale = new Vector3(0f, 0f, 0f);
+            
+            LeanTween.scale(TowerSelection.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
+                .setDelay(0.4f).setEaseOutElastic();
+        }
 
         private void CreateTowerSelectionButtons(TowerSelection towerSelection)
         {
@@ -80,6 +108,11 @@ namespace Architecture.Services.Factories.UI
 
                 spawnedButton.Tower = button.Tower;
                 towerSelection.Buttons.Add(spawnedButton);
+                
+                spawnedButton.transform.localScale = new Vector3(0f, 0f, 0f);
+                
+                LeanTween.scale(spawnedButton.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
+                    .setDelay(0.5f).setEaseOutElastic();
             }
         }
 
@@ -90,8 +123,6 @@ namespace Architecture.Services.Factories.UI
             
             _container.InstantiatePrefabForComponent<LoseMenu>
                 (_assetProvider.Initialize<LoseMenu>(AssetPath.LoseMenu), UIRoot);
-            
-            Time.timeScale = 0;
         }
 
         public void CreateVictoryMenu()
@@ -101,8 +132,6 @@ namespace Architecture.Services.Factories.UI
             
             _container.InstantiatePrefabForComponent<VictoryMenu>
                 (_assetProvider.Initialize<VictoryMenu>(AssetPath.VictoryMenu), UIRoot);
-            
-            Time.timeScale = 0;
         }
 
         public void CreateLevelSelection()
@@ -132,7 +161,7 @@ namespace Architecture.Services.Factories.UI
                         button.LevelId = marker.Id;
                     }
                     else
-                    {
+                    { 
                         _container.InstantiatePrefab(marker.ClosedButton,
                             marker.transform.position, Quaternion.identity, marker.transform);
                     }
@@ -143,9 +172,7 @@ namespace Architecture.Services.Factories.UI
         private Transform CreateParent(Transform parent) => 
             Object.Instantiate(parent);
         
-        private void CacheVariables()
-        {
+        private void CacheVariables() => 
             _levelsSettings = _assetProvider.Initialize<LevelSettings>(AssetPath.LevelSettings);
-        }
     }
 }

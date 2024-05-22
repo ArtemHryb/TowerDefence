@@ -6,7 +6,7 @@ namespace UI.Loading
     public class LoadingCurtain : MonoBehaviour
     {
         [SerializeField] private CanvasGroup _curtain;
-        private readonly float _disappearSpeed = 0.03f;
+        private readonly float _disappearSpeed = 0.01f;
 
         public void Show()
         {

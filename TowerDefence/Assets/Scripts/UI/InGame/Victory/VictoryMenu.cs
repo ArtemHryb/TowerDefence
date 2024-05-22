@@ -33,6 +33,22 @@ namespace UI.InGame.Victory
             _nextLevelButton.onClick.AddListener(NextLevelButton);
         }
 
+        private void Start()
+        {
+            gameObject.transform.localScale = Vector3.zero;
+            _mainMenuButton.transform.localScale = Vector3.zero;
+            _nextLevelButton.transform.localScale = Vector3.zero;
+            
+            LeanTween.scale(gameObject, new Vector3(1f, 1f, 1f), 1.5f)
+                .setEaseOutElastic();
+            
+            LeanTween.scale(_mainMenuButton.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
+                .setDelay(0.3f).setEaseOutElastic();
+            
+            LeanTween.scale(_nextLevelButton.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
+                .setDelay(0.4f).setEaseOutElastic();
+        }
+
         private void NextLevelButton()
         {
             _audioService.PlaySfx(SfxType.Click);
@@ -43,15 +59,12 @@ namespace UI.InGame.Victory
                 _stateMachine
                     .Enter<LoadLevelState, string>(_currentLevelSettingsProvider
                         .GetCurrentLevelSettings().NextLevel.ToString());
-
-            Time.timeScale = 1f;
         }
 
         private void MainMenuButton()
         {
             _audioService.PlaySfx(SfxType.Click);
             _stateMachine.Enter<LoadMainMenuState>();
-            Time.timeScale = 1;
         }
     }
 }

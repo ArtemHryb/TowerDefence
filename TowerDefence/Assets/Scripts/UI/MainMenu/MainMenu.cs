@@ -1,4 +1,5 @@
-﻿using Architecture.Services.Audio;
+﻿using System;
+using Architecture.Services.Audio;
 using Architecture.Services.Factories.UI;
 using Audio;
 using UnityEngine;
@@ -27,6 +28,15 @@ namespace UI.MainMenu
         {
             _playButton.onClick.AddListener(Play);
             _exitButton.onClick.AddListener(Exit);
+        }
+
+        private void Start()
+        {
+            LeanTween.scale(_playButton.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
+                .setDelay(1.3f).setEaseOutElastic();
+            
+            LeanTween.scale(_exitButton.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
+                .setDelay(1.4f).setEaseOutElastic();
         }
 
         private void Play()

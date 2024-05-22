@@ -16,7 +16,7 @@ namespace UI.InGame.Lose
         
         private IStateMachine _stateMachine;
         private IAudioService _audioService;
-        
+
         [Inject]
         public void Construct(IStateMachine stateMachine, IAudioService audioService)
         {
@@ -29,18 +29,32 @@ namespace UI.InGame.Lose
             _restartButton.onClick.AddListener(RestartButton);
         }
 
+        private void Start()
+        {
+            gameObject.transform.localScale = Vector3.zero;
+            _mainMenuButton.transform.localScale = Vector3.zero;
+            _restartButton.transform.localScale = Vector3.zero;
+            
+            LeanTween.scale(gameObject, new Vector3(1f, 1f, 1f), 1.5f)
+                .setEaseOutElastic();
+            
+            LeanTween.scale(_mainMenuButton.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
+                .setDelay(0.3f).setEaseOutElastic();
+            
+            LeanTween.scale(_restartButton.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
+                .setDelay(0.4f).setEaseOutElastic();
+        }
+
         private void RestartButton()
         {
             _audioService.PlaySfx(SfxType.Click);
             _stateMachine.Enter<LoadLevelState,string>(SceneManager.GetActiveScene().name);
-            Time.timeScale = 1;
         }
 
         private void MainMenuButton()
         {
             _audioService.PlaySfx(SfxType.Click);
             _stateMachine.Enter<LoadMainMenuState>();
-            Time.timeScale = 1;
         }
     }
 }
