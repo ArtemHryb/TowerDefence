@@ -70,7 +70,7 @@ MonoBehaviour:
     PlayerHp: 3
     PlayerCoins: 70
     EnemyData:
-      MaxHp: 125
+      MaxHp: 100
       Speed: 5
       KillBonus: 5
     TowerSelectionButtons:

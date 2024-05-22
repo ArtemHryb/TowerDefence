@@ -91,3 +91,5 @@ MonoBehaviour:
   _coroutineRunner: {fileID: 5701445983881932052, guid: 2e13d9019de8a234a980a58b53a75006,
     type: 3}
   _levelData: {fileID: 11400000, guid: dbd3fa1372d03c84ca64d29a45ea037d, type: 2}
+  _loadingCurtain: {fileID: 4378545619033837901, guid: ec176212b41da09478edf321335f34f2,
+    type: 3}

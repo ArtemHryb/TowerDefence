@@ -3,6 +3,8 @@ using Architecture.Services.Factories.UI;
 using Architecture.States.Interfaces;
 using Audio;
 using SceneManagement;
+using UI.Loading;
+using UnityEngine;
 
 namespace Architecture.States
 {
@@ -13,12 +15,15 @@ namespace Architecture.States
         private readonly ISceneLoader _sceneLoader;
         private readonly IUIFactory _uiFactory;
         private readonly IAudioService _audioService;
+        private readonly LoadingCurtain _loadingCurtain;
 
-        public LoadMainMenuState(ISceneLoader sceneLoader,IUIFactory uiFactory,IAudioService audioService)
+        public LoadMainMenuState(ISceneLoader sceneLoader,IUIFactory uiFactory,IAudioService audioService
+        ,LoadingCurtain loadingCurtain)
         {
             _sceneLoader = sceneLoader;
             _uiFactory = uiFactory;
             _audioService = audioService;
+            _loadingCurtain = loadingCurtain;
         }
         public void Exit()
         {
@@ -27,6 +32,8 @@ namespace Architecture.States
 
         public void Enter()
         {
+            _loadingCurtain.Show();
+            _loadingCurtain.Hide();
             _sceneLoader.Load(Boot,InitMainMenu);
             _audioService.PlayMusic(MusicType.MainMenu);
         }

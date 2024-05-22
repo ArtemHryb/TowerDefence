@@ -17,3 +17,7 @@ MonoBehaviour:
     _clip: {fileID: 8300000, guid: e2f612b51d4e0834bbfa77c9ebfe20bf, type: 3}
   - _musicType: 1
     _clip: {fileID: 8300000, guid: 0593c019a1e55c1468925f0d13b7fafb, type: 3}
+  - _musicType: 2
+    _clip: {fileID: 8300000, guid: b41059d5180672f42bf59e651abe2b73, type: 3}
+  - _musicType: 3
+    _clip: {fileID: 8300000, guid: a35a60088cafc05459b424b7bc680fbe, type: 3}

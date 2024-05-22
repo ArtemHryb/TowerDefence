@@ -15,6 +15,7 @@ using Architecture.States;
 using Architecture.States.Interfaces;
 using Data.LevelData;
 using SceneManagement;
+using UI.Loading;
 using UnityEngine;
 using Zenject;
 
@@ -24,9 +25,11 @@ namespace Architecture.Installers
     {
         [SerializeField] private MyCoroutineRunner _coroutineRunner;
         [SerializeField] private LevelSettings _levelData;
+        [SerializeField] private LoadingCurtain _loadingCurtain;
 
         public override void InstallBindings()
         {
+            BindLoadingCurtain();
             BindSceneLoader();
             BindCoroutineRunner();
             BindAssetProvider();
@@ -48,6 +51,17 @@ namespace Architecture.Installers
             BindBulletFactory();
             BindEnemySpawner();
             BindVictoryChecker();
+        }
+
+        private void BindLoadingCurtain()
+        {
+            LoadingCurtain loadingCurtain = Container
+                .InstantiatePrefabForComponent<LoadingCurtain>(_loadingCurtain);
+
+            Container
+                .Bind<LoadingCurtain>()
+                .FromInstance(loadingCurtain)
+                .AsSingle();
         }
 
         private void BindAudioService()

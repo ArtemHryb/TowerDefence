@@ -30,6 +30,7 @@ namespace Architecture.Installers
         private void AddStatesToStateMachine()
         {
             IStateMachine stateMachine = Container.Resolve<IStateMachine>();
+            
             stateMachine.States.Add(typeof(LoadMainMenuState),Container.Resolve<LoadMainMenuState>());
             stateMachine.States.Add(typeof(LoadLevelState),Container.Resolve<LoadLevelState>());
             stateMachine.States.Add(typeof(InitializeGameWorldState),Container.Resolve<InitializeGameWorldState>());

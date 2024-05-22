@@ -28,16 +28,8 @@ MonoBehaviour:
   - _sfxType: 6
     _clip: {fileID: 8300000, guid: 64e020565514aa749b8efa0e9808652c, type: 3}
   - _sfxType: 7
-    _clip: {fileID: 8300000, guid: d7b8a91a93cea294daabed710c745218, type: 3}
-  - _sfxType: 8
-    _clip: {fileID: 8300000, guid: d7b8a91a93cea294daabed710c745218, type: 3}
+    _clip: {fileID: 8300000, guid: 601f4f2a861349e43bc71710c5c8297a, type: 3}
   - _sfxType: 9
-    _clip: {fileID: 8300000, guid: d7b8a91a93cea294daabed710c745218, type: 3}
-  - _sfxType: 10
-    _clip: {fileID: 8300000, guid: d7b8a91a93cea294daabed710c745218, type: 3}
-  - _sfxType: 11
-    _clip: {fileID: 8300000, guid: d7b8a91a93cea294daabed710c745218, type: 3}
-  - _sfxType: 12
-    _clip: {fileID: 8300000, guid: d7b8a91a93cea294daabed710c745218, type: 3}
-  - _sfxType: 13
-    _clip: {fileID: 8300000, guid: d7b8a91a93cea294daabed710c745218, type: 3}
+    _clip: {fileID: 8300000, guid: 98b2a9f04b3f7ab49a5370d9a71b0eb0, type: 3}
+  - _sfxType: 8
+    _clip: {fileID: 8300000, guid: e626bc2f27acd544d94d595ae08ffeb8, type: 3}
