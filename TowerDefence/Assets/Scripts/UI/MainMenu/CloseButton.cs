@@ -1,4 +1,5 @@
-﻿using Architecture.Services.Audio;
+﻿using System;
+using Architecture.Services.Audio;
 using Audio;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,15 +18,19 @@ namespace UI.MainMenu
         {
             _audioService = audioService;
         }
-        private void Awake()
-        {
+        private void Awake() => 
             _button.onClick.AddListener(Close);
+
+        private void Start()
+        {
+            gameObject.transform.localScale = Vector3.zero;
+            LeanTween.scale(gameObject, new Vector3(1f, 1f, 1f),1.5f).setDelay(0.7f).setEaseOutElastic();
         }
 
         private void Close()
         {
             _audioService.PlaySfx(SfxType.Click);
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 }

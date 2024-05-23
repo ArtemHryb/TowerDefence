@@ -55,7 +55,7 @@ namespace Architecture.Services.Factories.UI
            DisplayPlayerHp playerHp =  _container.InstantiatePrefabForComponent<DisplayPlayerHp>
                 (_assetProvider.Initialize<DisplayPlayerHp>(AssetPath.DisplayPlayerHp), UIRoot);
            
-           playerHp.transform.localScale = new Vector3(0f, 0f, 0f);
+           playerHp.transform.localScale = Vector3.zero;
            
            LeanTween.scale(playerHp.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
                .setDelay(0.1f).setEaseOutElastic();
@@ -66,7 +66,7 @@ namespace Architecture.Services.Factories.UI
             DisplayCoinsCount coins = _container.InstantiatePrefabForComponent<DisplayCoinsCount>
                 (_assetProvider.Initialize<DisplayCoinsCount>(AssetPath.DisplayCoinsCount), UIRoot);
             
-            coins.transform.localScale = new Vector3(0f, 0f, 0f);
+            coins.transform.localScale = Vector3.zero;
             
             LeanTween.scale(coins.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
                 .setDelay(0.2f).setEaseOutElastic();
@@ -77,7 +77,7 @@ namespace Architecture.Services.Factories.UI
             SpawnEnemy spawnEnemy = _container.InstantiatePrefabForComponent<SpawnEnemy>
                 (_assetProvider.Initialize<SpawnEnemy>(AssetPath.SpawnEnemy), UIRoot);
             
-            spawnEnemy.transform.localScale = new Vector3(0f, 0f, 0f);
+            spawnEnemy.transform.localScale = Vector3.zero;
             
             LeanTween.scale(spawnEnemy.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
                 .setDelay(0.3f).setEaseOutElastic();
@@ -91,7 +91,7 @@ namespace Architecture.Services.Factories.UI
             TowerSelection = _container.InstantiatePrefabForComponent<TowerSelection>
                 (_assetProvider.Initialize<TowerSelection>(AssetPath.TowerSelection), UIRoot);
             
-            TowerSelection.transform.localScale = new Vector3(0f, 0f, 0f);
+            TowerSelection.transform.localScale = Vector3.zero;
             
             LeanTween.scale(TowerSelection.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
                 .setDelay(0.4f).setEaseOutElastic();
@@ -109,7 +109,7 @@ namespace Architecture.Services.Factories.UI
                 spawnedButton.Tower = button.Tower;
                 towerSelection.Buttons.Add(spawnedButton);
                 
-                spawnedButton.transform.localScale = new Vector3(0f, 0f, 0f);
+                spawnedButton.transform.localScale = Vector3.zero;
                 
                 LeanTween.scale(spawnedButton.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
                     .setDelay(0.5f).setEaseOutElastic();
@@ -140,6 +140,10 @@ namespace Architecture.Services.Factories.UI
             
             LevelSelectionWindow window = _container.InstantiatePrefabForComponent<LevelSelectionWindow>
                 (_assetProvider.Initialize<LevelSelectionWindow>(AssetPath.LevelSelectionWindow), UIRoot);
+
+            window.transform.localScale = Vector3.zero;
+            
+            LeanTween.scale(window.gameObject, new Vector3(1f, 1f, 1f), 1.5f).setEaseOutElastic();
             
             CreateLevelTransferButtons(window);
         }
@@ -150,21 +154,26 @@ namespace Architecture.Services.Factories.UI
             {
                 foreach (LevelData level in _levelsSettings.Levels)
                 {
-                    if (level.CurrentLevel == marker.Id) 
+                    if (level.CurrentLevel == marker.Id)
                         marker.IsOpened = level.IsLevelOpened;
+                }
 
-                    if (marker.IsOpened)
-                    {
-                        LevelTransferButton button = _container.InstantiatePrefabForComponent<LevelTransferButton>(marker.OpenedButton,
-                            marker.transform.position, Quaternion.identity, marker.transform);
-                        
-                        button.LevelId = marker.Id;
-                    }
-                    else
-                    { 
-                        _container.InstantiatePrefab(marker.ClosedButton,
-                            marker.transform.position, Quaternion.identity, marker.transform);
-                    }
+                if (marker.IsOpened)
+                {
+                    LevelTransferButton button = _container.InstantiatePrefabForComponent<LevelTransferButton>(marker.OpenedButton,
+                        Vector3.zero, Quaternion.identity, marker.transform);
+                    button.LevelId = marker.Id;
+
+                    LeanTween.scale(button.gameObject, new Vector3(1f, 1f, 1f), 1.5f).setEaseOutElastic()
+                        .setDelay(0.5f);
+                }
+                else 
+                { 
+                  GameObject closeButton =  _container.InstantiatePrefab(marker.ClosedButton,
+                        Vector3.zero, Quaternion.identity, marker.transform);
+                    
+                  LeanTween.scale(closeButton.gameObject, new Vector3(1f, 1f, 1f), 1.5f).setEaseOutElastic()
+                      .setDelay(0.6f);
                 }
             }
         }

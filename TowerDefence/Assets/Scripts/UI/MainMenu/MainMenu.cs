@@ -32,6 +32,9 @@ namespace UI.MainMenu
 
         private void Start()
         {
+            _playButton.transform.localScale = Vector3.zero;
+            _exitButton.transform.localScale = Vector3.zero;
+            
             LeanTween.scale(_playButton.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
                 .setDelay(1.3f).setEaseOutElastic();
             
