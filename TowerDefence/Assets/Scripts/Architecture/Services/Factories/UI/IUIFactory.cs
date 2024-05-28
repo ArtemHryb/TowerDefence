@@ -12,5 +12,6 @@ namespace Architecture.Services.Factories.UI
         void CreateLoseMenu();
         void CreateVictoryMenu();
         void CreateLevelSelection();
+        void CreateSettingsMenu();
     }
 }

@@ -18,6 +18,9 @@ namespace Architecture.Services.Audio
         private AudioSource _sfxAudioSource;
         private AudioSource _musicAudioSource;
 
+        private const string MusicPrefKey = "MusicEnabled";
+        private const string SoundsPrefKey = "SoundsEnabled";
+
         public AudioService(IAssetProvider assetProvider, IAudioFactory audioFactory)
         {
             _assetProvider = assetProvider;
@@ -26,6 +29,7 @@ namespace Architecture.Services.Audio
             InitializeMusicDataList();
             InitializeSfxAudioSource();
             InitializeMusicAudioSource();
+            ApplySavedAudioSettings();
         }
 
         public void PlayMusic(MusicType musicType)
@@ -43,6 +47,38 @@ namespace Architecture.Services.Audio
 
         public void StopMusic() =>
             _musicAudioSource.Stop();
+
+        public void SetMusicEnabled(bool isEnabled)
+        {
+            PlayerPrefs.SetInt(MusicPrefKey, isEnabled ? 1 : 0);
+            PlayerPrefs.Save();
+            ApplyMusicSetting(isEnabled);
+        }
+
+        public void SetSoundsEnabled(bool isEnabled)
+        {
+            PlayerPrefs.SetInt(SoundsPrefKey, isEnabled ? 1 : 0);
+            PlayerPrefs.Save();
+            ApplySoundsSetting(isEnabled);
+        }
+
+        private void ApplySavedAudioSettings()
+        {
+            bool isMusicEnabled = IsMusicEnabled();
+            bool isSoundsEnabled = IsSoundsEnabled();
+            ApplyMusicSetting(isMusicEnabled);
+            ApplySoundsSetting(isSoundsEnabled);
+        }
+
+        private void ApplyMusicSetting(bool isEnabled)
+        {
+            _musicAudioSource.mute = !isEnabled;
+        }
+
+        private void ApplySoundsSetting(bool isEnabled)
+        {
+            _sfxAudioSource.mute = !isEnabled;
+        }
 
         private MusicData GetMusicData(MusicType musicType)
         {
@@ -72,10 +108,18 @@ namespace Architecture.Services.Audio
                 _musicDataList.Add(music);
         }
 
-        private void InitializeSfxAudioSource() =>
+        private void InitializeSfxAudioSource()
+        {
             _sfxAudioSource = _audioFactory.CreateAudioSource(AudioSourceType.SfxAudioSource);
+        }
 
-        private void InitializeMusicAudioSource() =>
+        private void InitializeMusicAudioSource()
+        {
             _musicAudioSource = _audioFactory.CreateAudioSource(AudioSourceType.MusicAudioSource);
+        }
+
+        private bool IsMusicEnabled() => PlayerPrefs.GetInt(MusicPrefKey, 1) == 1;
+
+        private bool IsSoundsEnabled() => PlayerPrefs.GetInt(SoundsPrefKey, 1) == 1;
     }
 }

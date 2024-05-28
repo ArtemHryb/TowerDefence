@@ -57,8 +57,7 @@ namespace Architecture.Services.Factories.UI
            
            playerHp.transform.localScale = Vector3.zero;
            
-           LeanTween.scale(playerHp.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
-               .setDelay(0.1f).setEaseOutElastic();
+           LeanTweenScaling(playerHp.gameObject,0.1f);
         }
 
         private void CreatePlayerCoinsView()
@@ -68,8 +67,7 @@ namespace Architecture.Services.Factories.UI
             
             coins.transform.localScale = Vector3.zero;
             
-            LeanTween.scale(coins.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
-                .setDelay(0.2f).setEaseOutElastic();
+            LeanTweenScaling(coins.gameObject,0.2f);
         }
 
         private void CreateSpawnEnemy()
@@ -79,8 +77,7 @@ namespace Architecture.Services.Factories.UI
             
             spawnEnemy.transform.localScale = Vector3.zero;
             
-            LeanTween.scale(spawnEnemy.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
-                .setDelay(0.3f).setEaseOutElastic();
+            LeanTweenScaling(spawnEnemy.gameObject,0.3f);
         }
 
         private void CreateUIRoot() => 
@@ -93,8 +90,7 @@ namespace Architecture.Services.Factories.UI
             
             TowerSelection.transform.localScale = Vector3.zero;
             
-            LeanTween.scale(TowerSelection.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
-                .setDelay(0.4f).setEaseOutElastic();
+            LeanTweenScaling(TowerSelection.gameObject,0.4f);
         }
 
         private void CreateTowerSelectionButtons(TowerSelection towerSelection)
@@ -111,8 +107,7 @@ namespace Architecture.Services.Factories.UI
                 
                 spawnedButton.transform.localScale = Vector3.zero;
                 
-                LeanTween.scale(spawnedButton.gameObject, new Vector3(1f, 1f, 1f), 1.5f)
-                    .setDelay(0.5f).setEaseOutElastic();
+                LeanTweenScaling(spawnedButton.gameObject,0.5f);
             }
         }
 
@@ -143,9 +138,19 @@ namespace Architecture.Services.Factories.UI
 
             window.transform.localScale = Vector3.zero;
             
-            LeanTween.scale(window.gameObject, new Vector3(1f, 1f, 1f), 1.5f).setEaseOutElastic();
+            LeanTweenScaling(window.gameObject,1.5f);
             
             CreateLevelTransferButtons(window);
+        }
+
+        public void CreateSettingsMenu()
+        {
+           SettingsMenu menu = _container.InstantiatePrefabForComponent<SettingsMenu>
+                (_assetProvider.Initialize<SettingsMenu>(AssetPath.SettingsWindow), UIRoot);
+
+           menu.transform.localScale = Vector3.zero;
+           
+           LeanTweenScaling(menu.gameObject);
         }
 
         private void CreateLevelTransferButtons(LevelSelectionWindow window)
@@ -163,24 +168,29 @@ namespace Architecture.Services.Factories.UI
                     LevelTransferButton button = _container.InstantiatePrefabForComponent<LevelTransferButton>(marker.OpenedButton,
                         Vector3.zero, Quaternion.identity, marker.transform);
                     button.LevelId = marker.Id;
-
-                    LeanTween.scale(button.gameObject, new Vector3(1f, 1f, 1f), 1.5f).setEaseOutElastic()
-                        .setDelay(0.5f);
+                    
+                    LeanTweenScaling(button.gameObject, 0.5f);
                 }
                 else 
                 { 
                   GameObject closeButton =  _container.InstantiatePrefab(marker.ClosedButton,
                         Vector3.zero, Quaternion.identity, marker.transform);
-                    
-                  LeanTween.scale(closeButton.gameObject, new Vector3(1f, 1f, 1f), 1.5f).setEaseOutElastic()
-                      .setDelay(0.6f);
+
+                  LeanTweenScaling(closeButton, 0.6f);
                 }
             }
         }
 
         private Transform CreateParent(Transform parent) => 
             Object.Instantiate(parent);
+
+        private void LeanTweenScaling(GameObject gameObject) => 
+            LeanTween.scale(gameObject, new Vector3(1f, 1f, 1f), 1.5f).setEaseOutElastic();
         
+        private void LeanTweenScaling(GameObject gameObject, float delay) => 
+            LeanTween.scale(gameObject, new Vector3(1f, 1f, 1f), 1.5f).setEaseOutElastic()
+                .setDelay(delay);
+
         private void CacheVariables() => 
             _levelsSettings = _assetProvider.Initialize<LevelSettings>(AssetPath.LevelSettings);
     }

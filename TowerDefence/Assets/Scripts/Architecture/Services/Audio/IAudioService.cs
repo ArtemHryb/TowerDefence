@@ -7,5 +7,7 @@ namespace Architecture.Services.Audio
         void PlayMusic(MusicType musicType);
         void PlaySfx(SfxType sfxType);
         void StopMusic();
+        void SetMusicEnabled(bool isEnabled);
+        void SetSoundsEnabled(bool isEnabled);
     }
 }
