@@ -30,13 +30,57 @@ namespace Architecture.Services.Factories.UI
             _currentLevelSettingsProvider = currentLevelSettingsProvider;
             CacheVariables();
         }
-        
+
+        public void CreateLoseMenu()
+        {
+            Object.Destroy(UIRoot.gameObject);
+            UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
+            
+            _container.InstantiatePrefabForComponent<LoseMenu>
+                (_assetProvider.Initialize<LoseMenu>(AssetPath.LoseMenu), UIRoot);
+        }
+
+        public void CreateVictoryMenu()
+        {
+            Object.Destroy(UIRoot.gameObject);
+            UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
+            
+            _container.InstantiatePrefabForComponent<VictoryMenu>
+                (_assetProvider.Initialize<VictoryMenu>(AssetPath.VictoryMenu), UIRoot);
+        }
+
+        public void CreateLevelSelection()
+        {
+            UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
+            
+            LevelSelectionWindow window = _container.InstantiatePrefabForComponent<LevelSelectionWindow>
+                (_assetProvider.Initialize<LevelSelectionWindow>(AssetPath.LevelSelectionWindow), UIRoot);
+
+            window.transform.localScale = Vector3.zero;
+            
+            LeanTweenScaling(window.gameObject);
+            
+            CreateLevelTransferButtons(window);
+        }
+
         public void CreateMainMenu()
         {
             UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
 
             MainMenu mainMenu = _assetProvider.Initialize<MainMenu>(AssetPath.MainMenu);
             _container.InstantiatePrefabForComponent<MainMenu>(mainMenu, UIRoot);
+        }
+
+        public void CreateSettingsMenu()
+        {
+            SettingsMenu menu = _container.InstantiatePrefabForComponent<SettingsMenu>
+                (_assetProvider.Initialize<SettingsMenu>(AssetPath.SettingsWindow), UIRoot);
+
+            menu.transform.localScale = Vector3.zero;
+
+            LeanTween.scale(menu.gameObject, new Vector3(1f, 1f, 1f), 0.25f).setEaseOutQuad();
+            
+            //LeanTweenScaling(menu.gameObject);
         }
 
         public void CreateInGameMenu()
@@ -49,6 +93,9 @@ namespace Architecture.Services.Factories.UI
             CreateTowerSelection(); 
             CreateTowerSelectionButtons(TowerSelection);
         }
+
+        private void CreateUIRoot() => 
+            UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
 
         private void CreatePlayerHPView()
         {
@@ -80,9 +127,6 @@ namespace Architecture.Services.Factories.UI
             LeanTweenScaling(spawnEnemy.gameObject,0.3f);
         }
 
-        private void CreateUIRoot() => 
-            UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
-
         private void CreateTowerSelection()
         {
             TowerSelection = _container.InstantiatePrefabForComponent<TowerSelection>
@@ -109,48 +153,6 @@ namespace Architecture.Services.Factories.UI
                 
                 LeanTweenScaling(spawnedButton.gameObject,0.5f);
             }
-        }
-
-        public void CreateLoseMenu()
-        {
-            Object.Destroy(UIRoot.gameObject);
-            UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
-            
-            _container.InstantiatePrefabForComponent<LoseMenu>
-                (_assetProvider.Initialize<LoseMenu>(AssetPath.LoseMenu), UIRoot);
-        }
-
-        public void CreateVictoryMenu()
-        {
-            Object.Destroy(UIRoot.gameObject);
-            UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
-            
-            _container.InstantiatePrefabForComponent<VictoryMenu>
-                (_assetProvider.Initialize<VictoryMenu>(AssetPath.VictoryMenu), UIRoot);
-        }
-
-        public void CreateLevelSelection()
-        {
-            UIRoot = CreateParent(_assetProvider.Initialize<Transform>(AssetPath.UIRoot));
-            
-            LevelSelectionWindow window = _container.InstantiatePrefabForComponent<LevelSelectionWindow>
-                (_assetProvider.Initialize<LevelSelectionWindow>(AssetPath.LevelSelectionWindow), UIRoot);
-
-            window.transform.localScale = Vector3.zero;
-            
-            LeanTweenScaling(window.gameObject,1.5f);
-            
-            CreateLevelTransferButtons(window);
-        }
-
-        public void CreateSettingsMenu()
-        {
-           SettingsMenu menu = _container.InstantiatePrefabForComponent<SettingsMenu>
-                (_assetProvider.Initialize<SettingsMenu>(AssetPath.SettingsWindow), UIRoot);
-
-           menu.transform.localScale = Vector3.zero;
-           
-           LeanTweenScaling(menu.gameObject);
         }
 
         private void CreateLevelTransferButtons(LevelSelectionWindow window)

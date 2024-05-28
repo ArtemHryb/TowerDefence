@@ -17,13 +17,46 @@ MonoBehaviour:
     NextLevel: 2
     IsLevelOpened: 1
     Start: {x: -152, y: 0, z: -180}
-    Finish: {x: -82.11, y: 0, z: -74.13}
+    Finish: {x: -177.68, y: 0, z: -74.25}
     PlayerHp: 3
     PlayerCoins: 60
     EnemyData:
       MaxHp: 100
       Speed: 3
       KillBonus: 10
+    TowerSelectionButtons:
+      Buttons:
+      - ButtonPrefab: {fileID: 4680010376749980596, guid: 5e0f4f24e47ae604ca6dcd0a8848c1d2,
+          type: 3}
+        Tower:
+          TowerType: 0
+          TowerPrefab: {fileID: 8480562181185951144, guid: cb9d9b4790d64b64fa22293f8a873b4e,
+            type: 3}
+          TowerGhostPrefab: {fileID: 4978146501407319980, guid: 24c42055d55441345af516a5c9c3c340,
+            type: 3}
+          Price: 20
+          AttackRange: 30
+          FireSpeed: 1
+          Bullet:
+            Prefab: {fileID: 4042932769704639557, guid: 0eda220e0fcffb84dbf8c35fffffd479,
+              type: 3}
+            Damage: 15
+            Speed: 50
+    EnemyCount: 5
+    Waves: 2
+    DelayBeforeNextWave: 4
+    MusicType: 1
+  - CurrentLevel: 2
+    NextLevel: 3
+    IsLevelOpened: 0
+    Start: {x: -152, y: 0, z: -180}
+    Finish: {x: -81, y: 0, z: -74.25}
+    PlayerHp: 3
+    PlayerCoins: 70
+    EnemyData:
+      MaxHp: 100
+      Speed: 5
+      KillBonus: 5
     TowerSelectionButtons:
       Buttons:
       - ButtonPrefab: {fileID: 4680010376749980596, guid: 5e0f4f24e47ae604ca6dcd0a8848c1d2,
@@ -58,20 +91,20 @@ MonoBehaviour:
               type: 3}
             Damage: 25
             Speed: 47
-    EnemyCount: 5
-    Waves: 2
-    DelayBeforeNextWave: 4
-    MusicType: 1
-  - CurrentLevel: 2
+    EnemyCount: 8
+    Waves: 3
+    DelayBeforeNextWave: 3
+    MusicType: 2
+  - CurrentLevel: 3
     NextLevel: 0
     IsLevelOpened: 0
     Start: {x: -152, y: 0, z: -180}
-    Finish: {x: -121.75, y: 0, z: -75.64}
+    Finish: {x: -121.8, y: 0, z: -75.96}
     PlayerHp: 3
     PlayerCoins: 70
     EnemyData:
       MaxHp: 100
-      Speed: 5
+      Speed: 8
       KillBonus: 5
     TowerSelectionButtons:
       Buttons:
@@ -123,7 +156,7 @@ MonoBehaviour:
               type: 3}
             Damage: 13
             Speed: 65
-    EnemyCount: 8
-    Waves: 3
-    DelayBeforeNextWave: 3
-    MusicType: 2
+    EnemyCount: 10
+    Waves: 4
+    DelayBeforeNextWave: 5
+    MusicType: 3
