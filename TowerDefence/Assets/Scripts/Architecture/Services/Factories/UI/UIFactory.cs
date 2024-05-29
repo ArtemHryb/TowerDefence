@@ -3,6 +3,7 @@ using Data;
 using Data.LevelData;
 using Data.Windows;
 using Tower.Selection;
+using UI.Audio;
 using UI.InGame;
 using UI.InGame.Lose;
 using UI.InGame.Pause;
@@ -81,8 +82,6 @@ namespace Architecture.Services.Factories.UI
             menu.transform.localScale = Vector3.zero;
 
             LeanTween.scale(menu.gameObject, new Vector3(1f, 1f, 1f), 0.25f).setEaseOutQuad();
-            
-            //LeanTweenScaling(menu.gameObject);
         }
 
         public void CreatePauseMenu()
