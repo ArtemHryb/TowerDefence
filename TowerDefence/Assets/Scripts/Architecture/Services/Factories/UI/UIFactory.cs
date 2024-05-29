@@ -5,6 +5,7 @@ using Data.Windows;
 using Tower.Selection;
 using UI.InGame;
 using UI.InGame.Lose;
+using UI.InGame.Pause;
 using UI.InGame.Victory;
 using UI.MainMenu;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace Architecture.Services.Factories.UI
     {
         public TowerSelection TowerSelection { get; private set; }
         public Transform UIRoot { get; private set; }
+        public PauseMenu PauseMenu { get; private set; }
         private LevelSettings _levelsSettings;
         
         private readonly DiContainer _container;
@@ -83,15 +85,38 @@ namespace Architecture.Services.Factories.UI
             //LeanTweenScaling(menu.gameObject);
         }
 
+        public void CreatePauseMenu()
+        {
+            PauseMenu = _container.InstantiatePrefabForComponent<PauseMenu>(
+                _assetProvider.Initialize<PauseMenu>(AssetPath.PauseMenu), UIRoot);
+            
+            PauseMenu.transform.localScale = Vector3.zero;
+            
+            LeanTween.scale(PauseMenu.gameObject, new Vector3(1f, 1f, 1f), 0.2f).setEaseOutQuad()
+                .setOnComplete(() => Time.timeScale = 0f);
+        }
+
         public void CreateInGameMenu()
         {
             CreateUIRoot();
+
+            CreatePauseButton();
+            
             CreatePlayerHPView();
             CreatePlayerCoinsView();
             CreateSpawnEnemy();
 
             CreateTowerSelection(); 
             CreateTowerSelectionButtons(TowerSelection);
+        }
+
+        private void CreatePauseButton()
+        {
+            Pause pause = _container.InstantiatePrefabForComponent<Pause>(
+                _assetProvider.Initialize<Pause>(AssetPath.Pause),UIRoot);
+
+            pause.GetComponentInChildren<Transform>().localScale = Vector3.zero;
+             LeanTweenScaling(pause.gameObject,0.1f);
         }
 
         private void CreateUIRoot() => 
@@ -104,7 +129,7 @@ namespace Architecture.Services.Factories.UI
            
            playerHp.transform.localScale = Vector3.zero;
            
-           LeanTweenScaling(playerHp.gameObject,0.1f);
+           LeanTweenScaling(playerHp.gameObject,0.2f);
         }
 
         private void CreatePlayerCoinsView()
@@ -114,7 +139,7 @@ namespace Architecture.Services.Factories.UI
             
             coins.transform.localScale = Vector3.zero;
             
-            LeanTweenScaling(coins.gameObject,0.2f);
+            LeanTweenScaling(coins.gameObject,0.3f);
         }
 
         private void CreateSpawnEnemy()
@@ -124,7 +149,7 @@ namespace Architecture.Services.Factories.UI
             
             spawnEnemy.transform.localScale = Vector3.zero;
             
-            LeanTweenScaling(spawnEnemy.gameObject,0.3f);
+            LeanTweenScaling(spawnEnemy.gameObject,0.4f);
         }
 
         private void CreateTowerSelection()
@@ -134,7 +159,7 @@ namespace Architecture.Services.Factories.UI
             
             TowerSelection.transform.localScale = Vector3.zero;
             
-            LeanTweenScaling(TowerSelection.gameObject,0.4f);
+            LeanTweenScaling(TowerSelection.gameObject,0.5f);
         }
 
         private void CreateTowerSelectionButtons(TowerSelection towerSelection)
@@ -151,7 +176,7 @@ namespace Architecture.Services.Factories.UI
                 
                 spawnedButton.transform.localScale = Vector3.zero;
                 
-                LeanTweenScaling(spawnedButton.gameObject,0.5f);
+                LeanTweenScaling(spawnedButton.gameObject,0.6f);
             }
         }
 

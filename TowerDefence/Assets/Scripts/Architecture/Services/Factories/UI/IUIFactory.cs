@@ -1,4 +1,5 @@
 using Tower.Selection;
+using UI.InGame.Pause;
 using UnityEngine;
 
 namespace Architecture.Services.Factories.UI
@@ -7,11 +8,13 @@ namespace Architecture.Services.Factories.UI
     {
         TowerSelection TowerSelection { get; }
         Transform UIRoot { get; }
+        PauseMenu PauseMenu { get; }
         void CreateMainMenu();
         void CreateInGameMenu();
         void CreateLoseMenu();
         void CreateVictoryMenu();
         void CreateLevelSelection();
         void CreateSettingsMenu();
+        void CreatePauseMenu();
     }
 }

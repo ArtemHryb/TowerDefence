@@ -101,7 +101,7 @@ MonoBehaviour:
     Start: {x: -152, y: 0, z: -180}
     Finish: {x: -121.8, y: 0, z: -75.96}
     PlayerHp: 3
-    PlayerCoins: 70
+    PlayerCoins: 85
     EnemyData:
       MaxHp: 100
       Speed: 8

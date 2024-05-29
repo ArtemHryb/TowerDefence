@@ -14,6 +14,8 @@
         public const string LoseMenu = "UI/OnLevel/LoseMenu";
         public const string VictoryMenu = "UI/OnLevel/VictoryMenu";
         public const string TowerSelection = "UI/OnLevel/TowerSelection";
+        public const string Pause = "UI/OnLevel/Pause";
+        public const string PauseMenu = "UI/OnLevel/PauseMenu";
 
 
         public const string MainLevelComponentsParent = "MainLevelComponentsParent";

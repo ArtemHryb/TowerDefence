@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Musics:
   - _musicType: 0
-    _clip: {fileID: 8300000, guid: e2f612b51d4e0834bbfa77c9ebfe20bf, type: 3}
+    _clip: {fileID: 8300000, guid: 2c094c9f53e9f85439c0ac048cacf920, type: 3}
   - _musicType: 1
-    _clip: {fileID: 8300000, guid: 0593c019a1e55c1468925f0d13b7fafb, type: 3}
+    _clip: {fileID: 8300000, guid: 8eb59f2915629f54ba7b45d3590f2b44, type: 3}
   - _musicType: 2
-    _clip: {fileID: 8300000, guid: b41059d5180672f42bf59e651abe2b73, type: 3}
+    _clip: {fileID: 8300000, guid: 1c1b48b93e3cdf948b1259c542ea73be, type: 3}
   - _musicType: 3
-    _clip: {fileID: 8300000, guid: a35a60088cafc05459b424b7bc680fbe, type: 3}
+    _clip: {fileID: 8300000, guid: a4aee0eb39cc7504abb5c82b11610148, type: 3}
