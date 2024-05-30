@@ -34,6 +34,8 @@ namespace Architecture.Installers
             BindCoroutineRunner();
             BindAssetProvider();
 
+            BindSaveProgressService();
+            
             BindAudioFactory();
             BindAudioService();
             
@@ -51,6 +53,14 @@ namespace Architecture.Installers
             BindBulletFactory();
             BindEnemySpawner();
             BindVictoryChecker();
+        }
+
+        private void BindSaveProgressService()
+        {
+            Container
+                .Bind<ISaveProgressService>()
+                .To<SaveProgressService>()
+                .AsSingle();
         }
 
         private void BindLoadingCurtain()

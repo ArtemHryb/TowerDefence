@@ -70,15 +70,11 @@ namespace Architecture.Services.Audio
             ApplySoundsSetting(isSoundsEnabled);
         }
 
-        private void ApplyMusicSetting(bool isEnabled)
-        {
+        private void ApplyMusicSetting(bool isEnabled) => 
             _musicAudioSource.mute = !isEnabled;
-        }
 
-        private void ApplySoundsSetting(bool isEnabled)
-        {
+        private void ApplySoundsSetting(bool isEnabled) => 
             _sfxAudioSource.mute = !isEnabled;
-        }
 
         private MusicData GetMusicData(MusicType musicType)
         {
@@ -108,18 +104,16 @@ namespace Architecture.Services.Audio
                 _musicDataList.Add(music);
         }
 
-        private void InitializeSfxAudioSource()
-        {
+        private void InitializeSfxAudioSource() => 
             _sfxAudioSource = _audioFactory.CreateAudioSource(AudioSourceType.SfxAudioSource);
-        }
 
-        private void InitializeMusicAudioSource()
-        {
+        private void InitializeMusicAudioSource() => 
             _musicAudioSource = _audioFactory.CreateAudioSource(AudioSourceType.MusicAudioSource);
-        }
 
-        private bool IsMusicEnabled() => PlayerPrefs.GetInt(MusicPrefKey, 1) == 1;
+        private bool IsMusicEnabled() => 
+            PlayerPrefs.GetInt(MusicPrefKey, 1) == 1;
 
-        private bool IsSoundsEnabled() => PlayerPrefs.GetInt(SoundsPrefKey, 1) == 1;
+        private bool IsSoundsEnabled() => 
+            PlayerPrefs.GetInt(SoundsPrefKey, 1) == 1;
     }
 }

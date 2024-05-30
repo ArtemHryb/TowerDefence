@@ -1,6 +1,6 @@
 using Tower.Selection;
-using UI.Audio;
 using UI.InGame.Pause;
+using UI.Settings;
 using UnityEngine;
 
 namespace Architecture.Services.Factories.UI
@@ -9,7 +9,7 @@ namespace Architecture.Services.Factories.UI
     {
         TowerSelection TowerSelection { get; }
         Transform UIRoot { get; }
-        PauseMenu PauseMenu { get; }
+        PauseSettings PauseMenu { get; }
         void CreateMainMenu();
         void CreateInGameMenu();
         void CreateLoseMenu();

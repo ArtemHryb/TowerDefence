@@ -48,7 +48,7 @@ MonoBehaviour:
     MusicType: 1
   - CurrentLevel: 2
     NextLevel: 3
-    IsLevelOpened: 0
+    IsLevelOpened: 1
     Start: {x: -152, y: 0, z: -180}
     Finish: {x: -81, y: 0, z: -74.25}
     PlayerHp: 3

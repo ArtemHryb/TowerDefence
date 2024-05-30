@@ -1,11 +1,12 @@
 ﻿using Architecture.Services.Audio;
+using Architecture.States.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace UI.Audio
+namespace UI.Settings
 {
-    public abstract class AudioSettings : MonoBehaviour
+    public abstract class SettingsBase : MonoBehaviour
     {
         protected const string MusicPrefKey = "MusicEnabled";
         protected const string SoundsPrefKey = "SoundsEnabled";
@@ -25,7 +26,7 @@ namespace UI.Audio
         protected IAudioService AudioService;
         
         [Inject]
-        public void Construct(IAudioService audioService) =>
+        public void Construct(IAudioService audioService) => 
             AudioService = audioService;
 
         protected void UpdateMusicSprite(Toggle toggle, bool isEnabled) => 

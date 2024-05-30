@@ -1,5 +1,6 @@
 ﻿using Architecture.Services.Audio;
 using Architecture.Services.Factories.UI;
+using Architecture.Services.Interfaces;
 using Architecture.States.Interfaces;
 using Audio;
 using SceneManagement;
@@ -16,14 +17,16 @@ namespace Architecture.States
         private readonly IUIFactory _uiFactory;
         private readonly IAudioService _audioService;
         private readonly LoadingCurtain _loadingCurtain;
+        private readonly ISaveProgressService _saveProgressService;
 
         public LoadMainMenuState(ISceneLoader sceneLoader,IUIFactory uiFactory,IAudioService audioService
-        ,LoadingCurtain loadingCurtain)
+        ,LoadingCurtain loadingCurtain, ISaveProgressService saveProgressService)
         {
             _sceneLoader = sceneLoader;
             _uiFactory = uiFactory;
             _audioService = audioService;
             _loadingCurtain = loadingCurtain;
+            _saveProgressService = saveProgressService;
         }
         public void Exit()
         {
@@ -32,6 +35,7 @@ namespace Architecture.States
 
         public void Enter()
         {
+            _saveProgressService.LoadLevelProgress();
             _loadingCurtain.Show();
             _loadingCurtain.Hide();
             _sceneLoader.Load(Boot,InitMainMenu);

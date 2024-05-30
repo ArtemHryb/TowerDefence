@@ -3,12 +3,12 @@ using Data;
 using Data.LevelData;
 using Data.Windows;
 using Tower.Selection;
-using UI.Audio;
 using UI.InGame;
 using UI.InGame.Lose;
 using UI.InGame.Pause;
 using UI.InGame.Victory;
 using UI.MainMenu;
+using UI.Settings;
 using UnityEngine;
 using Zenject;
 
@@ -18,7 +18,7 @@ namespace Architecture.Services.Factories.UI
     {
         public TowerSelection TowerSelection { get; private set; }
         public Transform UIRoot { get; private set; }
-        public PauseMenu PauseMenu { get; private set; }
+        public PauseSettings PauseMenu { get; private set; }
         private LevelSettings _levelsSettings;
         
         private readonly DiContainer _container;
@@ -76,8 +76,8 @@ namespace Architecture.Services.Factories.UI
 
         public void CreateSettingsMenu()
         {
-            SettingsMenu menu = _container.InstantiatePrefabForComponent<SettingsMenu>
-                (_assetProvider.Initialize<SettingsMenu>(AssetPath.SettingsWindow), UIRoot);
+            MenuSettings menu = _container.InstantiatePrefabForComponent<MenuSettings>
+                (_assetProvider.Initialize<MenuSettings>(AssetPath.SettingsWindow), UIRoot);
 
             menu.transform.localScale = Vector3.zero;
 
@@ -86,8 +86,8 @@ namespace Architecture.Services.Factories.UI
 
         public void CreatePauseMenu()
         {
-            PauseMenu = _container.InstantiatePrefabForComponent<PauseMenu>(
-                _assetProvider.Initialize<PauseMenu>(AssetPath.PauseMenu), UIRoot);
+            PauseMenu = _container.InstantiatePrefabForComponent<PauseSettings>(
+                _assetProvider.Initialize<PauseSettings>(AssetPath.PauseMenu), UIRoot);
             
             PauseMenu.transform.localScale = Vector3.zero;
             
